@@ -35,6 +35,3 @@ Thumbs.db
 *.log
 *.jar
 !gradle-wrapper.jar
-
-# temp
-*.md
