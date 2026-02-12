@@ -1,0 +1,33 @@
+{
+  "dynamax_unleashed.name": "Dynamax Unleashed",
+  "dynamax_unleashed.description": "Allows Pokémon to Dynamax and Gigantamax outside of battle",
+  
+  "dynamax_unleashed.button.dynamax": "Dynamax",
+  "dynamax_unleashed.button.gigantamax": "Gigantamax",
+  "dynamax_unleashed.button.revert": "Revert Dynamax",
+  
+  "dynamax_unleashed.message.cooldown_active": "§cYour Pokémon is too tired to Dynamax! Wait %s seconds.",
+  "dynamax_unleashed.message.no_dynamax_band": "§cYou need a Dynamax Band to use Dynamax outside of battle!",
+  "dynamax_unleashed.message.cannot_dynamax": "§cThis Pokémon cannot Dynamax!",
+  "dynamax_unleashed.message.dynamax_activated": "§b%s has Dynamaxed!",
+  "dynamax_unleashed.message.gigantamax_activated": "§d%s has Gigantamaxed!",
+  "dynamax_unleashed.message.dynamax_reverted": "§e%s returned to normal size.",
+  
+  "dynamax_unleashed.message.already_mega": "§cCannot Dynamax while Mega Evolved!",
+  "dynamax_unleashed.message.already_primal": "§cCannot Dynamax while in Primal form!",
+  "dynamax_unleashed.message.already_ultra": "§cCannot Dynamax while in Ultra Burst!",
+  
+  "dynamax_unleashed.config.title": "Dynamax Unleashed Config",
+  "dynamax_unleashed.config.enabled": "Enable Overworld Dynamax",
+  "dynamax_unleashed.config.cooldown": "Cooldown (seconds)",
+  "dynamax_unleashed.config.scale": "Dynamax Scale Multiplier",
+  "dynamax_unleashed.config.require_band": "Require Dynamax Band",
+  "dynamax_unleashed.config.allow_gigantamax": "Allow Gigantamax Forms",
+  "dynamax_unleashed.config.maintain_requirements": "Maintain Battle Requirements",
+  
+  "dynamax_unleashed.tooltip.cooldown_remaining": "§7Dynamax Available In: §c%s seconds",
+  "dynamax_unleashed.tooltip.ready": "§aReady to Dynamax!",
+  
+  "dynamax_unleashed.command.clear_cooldown": "Cleared Dynamax cooldown for %s",
+  "dynamax_unleashed.command.clear_all": "Cleared all Dynamax cooldowns (%s total)"
+}

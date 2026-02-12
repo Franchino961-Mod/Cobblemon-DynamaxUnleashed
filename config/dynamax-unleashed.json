@@ -1,0 +1,18 @@
+{
+  "overworldDynamax": {
+    "enabled": true,
+    "cooldownSeconds": 60,
+    "dynamaxScale": 2.0,
+    "showCooldownMessage": true,
+    "allowGigantamax": true,
+    "requireDynamaxBand": true,
+    "maintainBattleRequirements": true
+  },
+  "messages": {
+    "cooldownActive": "§cYour Pokémon is too tired to Dynamax! Wait {time} seconds.",
+    "noDynamaxBand": "§cYou need a Dynamax Band to use Dynamax outside of battle!",
+    "cannotDynamax": "§cThis Pokémon cannot Dynamax!",
+    "dynamaxActivated": "§b{pokemon} has Dynamaxed!",
+    "dynamaxReverted": "§e{pokemon} returned to normal size."
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.dynamaxunleashed.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "DynamaxRequestMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
