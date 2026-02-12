@@ -1,7 +1,6 @@
 plugins {
     id 'fabric-loom' version '1.7-SNAPSHOT'
     id 'maven-publish'
-    id 'org.jetbrains.kotlin.jvm' version '2.0.0'
 }
 
 version = project.mod_version
@@ -23,9 +22,6 @@ dependencies {
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-    
-    // Kotlin
-    modImplementation "net.fabricmc:fabric-language-kotlin:${project.fabric_kotlin_version}"
     
     // Cobblemon
     modImplementation "com.cobblemon:fabric:${project.cobblemon_version}"
