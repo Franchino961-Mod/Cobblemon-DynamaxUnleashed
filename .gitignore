@@ -3,6 +3,9 @@
 build/
 out/
 classes/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
 
 # Eclipse
 *.launch
@@ -10,20 +13,31 @@ classes/
 .metadata/
 .classpath
 .project
+.apt_generated
+.factorypath
+.springBeans
+.sts4-cache
 bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
 
 # IntelliJ IDEA
 .idea/
 *.iml
 *.ipr
 *.iws
+!**/src/main/**/out/
+!**/src/test/**/out/
 
 # VS Code
 .vscode/
 
-# Fabric
+# Fabric/Loom
 run/
 logs/
+.fabric/
+remapped/
+loom-cache/
 
 # macOS
 .DS_Store
