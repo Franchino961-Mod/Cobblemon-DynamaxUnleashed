@@ -1,6 +1,7 @@
 plugins {
     id 'fabric-loom' version '1.7-SNAPSHOT'
     id 'maven-publish'
+    id 'architectury-plugin' version '3.4-SNAPSHOT'
 }
 
 version = project.mod_version
@@ -14,6 +15,7 @@ repositories {
     mavenCentral()
     maven { url = 'https://maven.impactdev.net/repository/development/' }
     maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
+    maven { url = 'https://maven.architectury.dev/' }
 }
 
 dependencies {
@@ -23,11 +25,14 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
     
-    // Cobblemon
+    // Architectury API
+    modImplementation "dev.architectury:architectury-fabric:${project.architectury_version}"
+    
+    // Cobblemon (includes Kotlin)
     modImplementation "com.cobblemon:fabric:${project.cobblemon_version}"
     
-    // Mega Showdown (required dependency)
-    modImplementation "com.github.megashowdown:mega-showdown-fabric:${project.mega_showdown_version}"
+    // Kotlin standard library (needed for Cobblemon integration)
+    modImplementation "org.jetbrains.kotlin:kotlin-stdlib:1.9.23"
 }
 
 processResources {
