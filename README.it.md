@@ -5,6 +5,8 @@ Una mod addon per Cobblemon che permette ai Pokémon di usare Dynamax e Gigantam
 [![en](https://img.shields.io/badge/lang-en-red.svg)](README.md)
 [![it](https://img.shields.io/badge/lang-it-green.svg)](README.it.md)
 
+📜 **[Visualizza Changelog](CHANGELOG.md)** | 🏷️ **Versione Corrente: 1.1.0**
+
 ## 📋 Descrizione
 
 Questa mod estende la funzionalità Dynamax di Cobblemon oltre le battaglie, permettendo ai tuoi Pokémon di trasformarsi nelle loro forme giganti Dynamax o Gigantamax nell'overworld. Perfetta per mostrare i tuoi Pokémon preferiti o semplicemente per divertirsi con le loro forme massicce!
@@ -12,10 +14,14 @@ Questa mod estende la funzionalità Dynamax di Cobblemon oltre le battaglie, per
 ## ✨ Caratteristiche
 
 - **🔴 Dynamax nell'Overworld**: Usa il Dynamax ovunque, non solo in battaglia
+- **⭐ Integrazione Mega Showdown**: Compatibilità totale con i requisiti MSD (v1.1.0)
+  - **Dynamax Band Richiesta**: I giocatori necessitano di una Dynamax Band per usare Dynamax
+  - **Prossimità Power Spot**: Bisogna essere vicini a un blocco Power Spot (raggio 20 blocchi)
+  - **Validazione Fattore G-Max**: I Pokémon devono avere il Fattore G-Max per le forme Gigantamax
 - **⏱️ Sistema di Cooldown**: Cooldown configurabile tra un uso e l'altro (default: 60 secondi)
 - **📏 Scala Configurabile**: Regola la dimensione dei Pokémon Dynamaxed (default: 2.0x)
-- **🎨 Supporto Gigantamax**: Tutte le forme Gigantamax sono supportate
-- **🛡️ Requisiti di Battaglia**: Mantiene le stesse limitazioni del Dynamax in battaglia
+- **🎨 Supporto Gigantamax**: Tutte le forme Gigantamax con modelli 3D completi
+- **🛡️ Requisiti di Battaglia**: Previene Dynamax durante Megaevoluzione, Archeorisveglio, Ultraesplosione
 - **🌍 Multilingua**: Traduzioni in inglese e italiano incluse
 - **⚙️ Completamente Configurabile**: Personalizza ogni aspetto tramite file di configurazione
 
@@ -51,11 +57,20 @@ Questa mod estende la funzionalità Dynamax di Cobblemon oltre le battaglie, per
 ### Condizioni per il Dynamax
 
 ✅ **Puoi usare il Dynamax se:**
+- Hai una **Dynamax Band** nel tuo inventario (se abilitato)
+- Sei vicino a un blocco **Power Spot** entro il raggio (se abilitato)
 - Il Pokémon non è in cooldown
-- Il Pokémon soddisfa i requisiti di battaglia (se abilitato nella config)
+- Il Pokémon soddisfa i requisiti di battaglia (nessun altro gimmick attivo)
 - La mod è abilitata nella configurazione
 
+✅ **Puoi usare Gigantamax se:**
+- Tutte le condizioni Dynamax sopra sono soddisfatte
+- Il Pokémon ha il **Fattore G-Max** abilitato (se richiesto nella config)
+- La specie del Pokémon ha una forma Gigantamax
+
 ❌ **Non puoi usare il Dynamax se:**
+- Non hai una Dynamax Band (quando `requireDynamaxBand: true`)
+- Nessun Power Spot è nelle vicinanze (quando `requirePowerSpot: true` e `dynamaxAnywhere: false`)
 - Il Pokémon è Megaevoluto
 - Il Pokémon è in forma Primordiale
 - Il Pokémon è in Ultraesplosione
@@ -73,11 +88,19 @@ Il file di configurazione si trova in `config/dynamax-unleashed.json`:
   "showCooldownMessage": true,
   "allowGigantamax": true,
   "maintainBattleRequirements": true,
+  "requireDynamaxBand": true,
+  "requirePowerSpot": true,
+  "powerSpotRange": 20,
+  "dynamaxAnywhere": false,
+  "requireGmaxFactor": true,
   "messages": {
     "cooldownActive": "§cIl tuo Pokémon è troppo stanco per usare Dynamax! Aspetta {time} secondi.",
     "cannotDynamax": "§cQuesto Pokémon non può usare Dynamax!",
     "dynamaxActivated": "§b{pokemon} ha usato Dynamax!",
-    "dynamaxReverted": "§e{pokemon} è tornato alle dimensioni normali."
+    "dynamaxReverted": "§e{pokemon} è tornato alle dimensioni normali.",
+    "noDynamaxBand": "§cHai bisogno di una Dynamax Band per usare Dynamax!",
+    "noPowerSpot": "§cDevi essere vicino a un Power Spot per usare Dynamax!",
+    "noGmaxFactor": "§cQuesto Pokémon non può usare Gigantamax! (Manca il Fattore G-Max)"
   }
 }
 ```
@@ -92,6 +115,11 @@ Il file di configurazione si trova in `config/dynamax-unleashed.json`:
 | `showCooldownMessage` | Mostra messaggi di cooldown ai giocatori | `true` |
 | `allowGigantamax` | Permetti forme Gigantamax | `true` |
 | `maintainBattleRequirements` | Usa gli stessi requisiti della battaglia | `true` |
+| `requireDynamaxBand` | **[v1.1.0]** Richiedi Dynamax Band nell'inventario | `true` |
+| `requirePowerSpot` | **[v1.1.0]** Richiedi prossimità Power Spot | `true` |
+| `powerSpotRange` | **[v1.1.0]** Raggio di ricerca Power Spot in blocchi | `20` |
+| `dynamaxAnywhere` | **[v1.1.0]** Ignora requisito Power Spot | `false` |
+| `requireGmaxFactor` | **[v1.1.0]** Richiedi Fattore G-Max per Gigantamax | `true` |
 
 ### Messaggi Personalizzati
 
@@ -187,11 +215,13 @@ cd dynamax-unleashed
 .\gradlew.bat build
 ```
 
-Il file `.jar` compilato sarà in `build/libs/dynamax-unleashed-1.0.0.jar`
+Il file `.jar` compilato sarà in `build/libs/dynamax-unleashed-1.1.0.jar`
 
 ## 📝 Problemi Noti
 - Persistenza del cooldown tra riavvii del server non ancora implementata
 - Nessun effetto visivo o particelle quando si attiva il Dynamax
+- Rilevamento Dynamax Band controlla solo inventario principale (integrazione Accessories API pianificata)
+- Requisito Power Spot richiede Mega Showdown installato (fornisce il tag blocco)
 
 ## 🚀 Funzionalità Pianificate
 
