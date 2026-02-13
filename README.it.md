@@ -23,32 +23,37 @@ Questa mod estende la funzionalità Dynamax di Cobblemon oltre le battaglie, per
 
 - **Minecraft**: 1.21.1
 - **Fabric Loader**: 0.16.0 o superiore
-- **Fabric API**: Ultima versione
-- **Cobblemon**: 1.7.0 o superiore
-- **Mega Showdown**: 1.6.0 o superiore
+- **Fabric API**: 0.108.0+1.21.1 o superiore
+- **Cobblemon**: 1.7.1+1.21.1 o superiore
+- **Mega Showdown**: 1.6.0 o superiore **(OBBLIGATORIO)**
+- **Architectury API**: 13.0.6 o superiore
 - **Java**: 21 o superiore
+
+> ⚠️ **Importante**: Mega Showdown è obbligatorio in quanto fornisce i modelli 3D e le texture Gigantamax. Senza, i Pokémon aumenteranno solo di dimensione senza cambiamenti visivi al modello.
 
 ## 📦 Installazione
 
-1. Assicurati di avere installato Fabric Loader, Fabric API, Cobblemon e Mega Showdown
+1. Assicurati di avere installato Fabric Loader, Fabric API, Cobblemon, **Mega Showdown** e Architectury API
 2. Scarica il file `.jar` della mod
 3. Posiziona il file nella cartella `mods` della tua installazione di Minecraft
 4. Avvia il gioco!
 
+> 💡 **Nota**: Mega Showdown deve essere installato affinché le forme Gigantamax vengano visualizzate correttamente con modelli 3D personalizzati. La mod non si caricherà senza.
+
 ## 🎮 Come Usare
 
-1. **Ottieni un Polsino Dynamax** - Richiesto di default (dalla mod Mega Showdown)
-2. **Interagisci con il tuo Pokémon** nel mondo
-3. **Seleziona "Dynamax"** dal menu di interazione (simile alla Megaevoluzione)
+1. **Click destro** sul tuo Pokémon nel mondo
+2. **Apri la ruota di interazione** - La stessa GUI usata per cavalcare, dare oggetti, ecc.
+3. **Seleziona l'opzione "Dynamax"** dalla ruota
 4. Il tuo Pokémon crescerà fino a dimensioni enormi!
-5. Clicca di nuovo per tornare alle dimensioni normali
+5. Interagisci di nuovo e seleziona "Annulla Dynamax" per tornare alle dimensioni normali
 
 ### Condizioni per il Dynamax
 
 ✅ **Puoi usare il Dynamax se:**
-- Hai un Polsino Dynamax (se richiesto nella configurazione)
 - Il Pokémon non è in cooldown
-- Il Pokémon soddisfa i requisiti di battaglia
+- Il Pokémon soddisfa i requisiti di battaglia (se abilitato nella config)
+- La mod è abilitata nella configurazione
 
 ❌ **Non puoi usare il Dynamax se:**
 - Il Pokémon è Megaevoluto
@@ -67,11 +72,9 @@ Il file di configurazione si trova in `config/dynamax-unleashed.json`:
   "dynamaxScale": 2.0,
   "showCooldownMessage": true,
   "allowGigantamax": true,
-  "requireDynamaxBand": true,
   "maintainBattleRequirements": true,
   "messages": {
     "cooldownActive": "§cIl tuo Pokémon è troppo stanco per usare Dynamax! Aspetta {time} secondi.",
-    "noDynamaxBand": "§cHai bisogno di un Polsino Dynamax per usare Dynamax fuori dalla battaglia!",
     "cannotDynamax": "§cQuesto Pokémon non può usare Dynamax!",
     "dynamaxActivated": "§b{pokemon} ha usato Dynamax!",
     "dynamaxReverted": "§e{pokemon} è tornato alle dimensioni normali."
@@ -88,7 +91,6 @@ Il file di configurazione si trova in `config/dynamax-unleashed.json`:
 | `dynamaxScale` | Moltiplicatore dimensione (1.0 = normale) | `2.0` |
 | `showCooldownMessage` | Mostra messaggi di cooldown ai giocatori | `true` |
 | `allowGigantamax` | Permetti forme Gigantamax | `true` |
-| `requireDynamaxBand` | Richiedi l'oggetto Polsino Dynamax | `true` |
 | `maintainBattleRequirements` | Usa gli stessi requisiti della battaglia | `true` |
 
 ### Messaggi Personalizzati
@@ -99,16 +101,20 @@ Tutti i messaggi supportano codici colore (`§`) e segnaposto:
 
 ## 🎮 Compatibilità
 
-Questa mod si integra perfettamente con:
+Questa mod **richiede e si integra** con:
 - **Cobblemon** - Dipendenza principale per le meccaniche dei Pokémon
-- **Mega Showdown** - Fornisce il Polsino Dynamax e le funzionalità Dynamax di battaglia
+- **Mega Showdown** - **OBBLIGATORIO** - Fornisce modelli 3D, texture e animazioni Gigantamax
+- **Architectury API** - Per il networking cross-platform
 
-La mod è progettata per funzionare insieme ad altri addon di Cobblemon senza conflitti.
+La mod funziona utilizzando le risorse Gigantamax di Mega Showdown aggiungendo la funzionalità di usare Dynamax fuori dalla battaglia con un sistema di cooldown. Senza Mega Showdown, i Pokémon aumenteranno solo di dimensione senza cambiare i loro modelli 3D.
 
 ## ❓ FAQ
 
-**Q: Devo installare Mega Showdown?**  
-A: Sì, Mega Showdown è richiesto poiché fornisce il Polsino Dynamax e le meccaniche base del Dynamax.
+**Q: Mega Showdown è obbligatorio?**  
+A: Sì! Mega Showdown è una **dipendenza obbligatoria**. Fornisce i modelli 3D e le texture Gigantamax. Senza, la mod non si caricherà.
+
+**Q: Cosa succede se non installo Mega Showdown?**  
+A: Il gioco non caricherà questa mod poiché Mega Showdown è segnato come dipendenza obbligatoria nel fabric.mod.json.
 
 **Q: Posso usarla in multiplayer?**  
 A: Sì! La mod funziona sia in singleplayer che in multiplayer. Deve essere installata sul server.
@@ -118,9 +124,6 @@ A: No, i Pokémon torneranno alle dimensioni normali al riavvio del server, ma i
 
 **Q: Posso cambiare la dimensione dei Pokémon Dynamax?**  
 A: Sì! Regola il valore `dynamaxScale` nella configurazione. Valori superiori a 2.0 li rendono ancora più grandi!
-
-**Q: Posso disabilitare il requisito del Polsino Dynamax?**  
-A: Sì, imposta `requireDynamaxBand` su `false` nella configurazione.
 
 **Q: Funziona con i modpack?**  
 A: Sì! Sentiti libero di includere questa mod nel tuo modpack.
@@ -132,37 +135,63 @@ A: Sì! Sentiti libero di includere questa mod nel tuo modpack.
 ```
 dynamax-unleashed/
 ├── build.gradle                    # Configurazione build
-├── fabric.mod.json                 # Metadata della mod
-├── dynamax-unleashed.mixins.json   # Configurazione mixin
-├── config/
-│   └── dynamax-unleashed.json      # Configurazione predefinita
-├── com/dynamaxunleashed/
-│   ├── DynamaxUnleashed.java       # Entry point
-│   ├── config/
-│   │   └── ModConfig.java          # Gestione configurazione
-│   ├── cooldown/
-│   │   └── CooldownManager.java    # Sistema cooldown
-│   ├── handler/
-│   │   └── PokemonInteractionHandler.java  # Gestore interazioni
-│   └── mixin/
-│       └── DynamaxRequestMixin.java  # Bypass restrizioni battaglia
-└── assets/dynamax_unleashed/lang/
-    ├── en_us.json                  # Traduzioni inglesi
-    └── it_it.json                  # Traduzioni italiane
+├── gradle.properties               # Proprietà progetto
+├── settings.gradle                 # Impostazioni Gradle
+├── src/main/
+│   ├── java/com/dynamaxunleashed/
+│   │   ├── DynamaxUnleashed.java           # Entry point principale
+│   │   ├── DynamaxUnleashedClient.java     # Entry point client
+│   │   ├── config/
+│   │   │   └── ModConfig.java              # Configurazione
+│   │   ├── cooldown/
+│   │   │   └── CooldownManager.java        # Gestione cooldown
+│   │   ├── gimmick/
+│   │   │   └── DynamaxGimmick.java         # Logica Dynamax principale
+│   │   ├── handler/
+│   │   │   └── InteractionGUIHandler.java  # Integrazione GUI
+│   │   ├── networking/
+│   │   │   ├── DynamaxPacket.java          # Pacchetto C2S
+│   │   │   ├── DynamaxPacketHandler.java   # Gestore pacchetti
+│   │   │   └── DynamaxNetworking.java      # Registrazione rete
+│   │   └── util/
+│   │       └── PlayerUtils.java            # Utilità helper
+│   └── resources/
+│       ├── fabric.mod.json                 # Metadata mod
+│       ├── dynamax-unleashed.mixins.json   # Config mixin
+│       └── assets/dynamax-unleashed/
+│           ├── lang/
+│           │   ├── en_us.json              # Traduzioni inglesi
+│           │   └── it_it.json              # Traduzioni italiane
+│           └── textures/gui/
+│               └── dynamax_icon.png        # Icona ruota interazione
+└── config/
+    └── dynamax-unleashed.json              # Config predefinita
 ```
 
 ### Compilazione dal Codice Sorgente
 
+**Requisiti:**
+- JDK 21 o superiore
+- Git (opzionale)
+
+**Passaggi:**
 ```bash
+# Clona o scarica il repository
+git clone <repository-url>
+cd dynamax-unleashed
+
+# Compila la mod
 ./gradlew build
+
+# Su Windows, usa:
+.\gradlew.bat build
 ```
 
-Il file `.jar` compilato sarà in `build/libs/`
+Il file `.jar` compilato sarà in `build/libs/dynamax-unleashed-1.0.0.jar`
 
 ## 📝 Problemi Noti
-
-- Integrazione del pulsante GUI con la schermata di interazione di Cobblemon (richiede API più recente)
-- Persistenza del cooldown tra riavvii del server
+- Persistenza del cooldown tra riavvii del server non ancora implementata
+- Nessun effetto visivo o particelle quando si attiva il Dynamax
 
 ## 🚀 Funzionalità Pianificate
 
@@ -180,9 +209,10 @@ Questa mod è rilasciata sotto licenza MIT. Sentiti libero di includerla nei tuo
 
 Se incontri problemi o bug, per favore segnalali con:
 - Versione della mod
-- Versioni di Minecraft/Fabric/Cobblemon/Mega Showdown
+- Versioni di Minecraft/Fabric/Cobblemon/Architectury API
 - Descrizione dettagliata del problema
 - Log di crash (se applicabile)
+- Passaggi per riprodurre il problema
 
 ## 🤝 Contributi
 
@@ -190,9 +220,12 @@ Contributi, issues e richieste di funzionalità sono benvenuti!
 
 ## 👏 Crediti
 
-- **Cobblemon Team** - Per la fantastica mod Pokémon
-- **Mega Showdown Team** - Per l'implementazione base del Dynamax
+- **Cobblemon Team** - Per la fantastica mod Pokémon e l'API completa
+- **Mega Showdown Team** - Per i modelli 3D Gigantamax, texture, animazioni e l'implementazione base del Dynamax su cui si basa questa mod
+- **Architectury Team** - Per l'API di networking cross-platform
 - **Community Modding** - Per supporto e testing
+
+> 📝 **Ringraziamenti Speciali**: Questa mod utilizza le risorse Gigantamax create dal team di Mega Showdown. Tutti i modelli, texture e animazioni Gigantamax fanno parte della mod Mega Showdown.
 
 ---
 
