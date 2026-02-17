@@ -14,19 +14,31 @@ import java.io.FileWriter;
  */
 public class ModConfig {
     
+    // General settings
     public boolean enabled = true;
     public int cooldownSeconds = 60;
     public double dynamaxScale = 2.0;
     public boolean showCooldownMessage = true;
     public boolean allowGigantamax = true;
     public boolean maintainBattleRequirements = true;
+    
+    // MSD-compatible requirements (v1.1.0+)
+    public boolean requireDynamaxBand = true;         // Require Dynamax Band in inventory
+    public boolean requirePowerSpot = true;           // Require Power Spot block nearby
+    public int powerSpotRange = 20;                   // Range to search for Power Spot
+    public boolean dynamaxAnywhere = false;           // Bypass Power Spot requirement
+    public boolean requireGmaxFactor = true;          // Require GmaxFactor for Gigantamax
+    
     public Messages messages = new Messages();
     
     public static class Messages {
         public String cooldownActive = "§cYour Pokémon is too tired to Dynamax! Wait {time} seconds.";
-        public String cannotDynamax = "§cThis Pokémon cannot Dynamax!";
+        public String cannotDynamax = "§cThis Pokémon cannot Dynamax! (Cannot Dynamax if Mega Evolved, Primal, or Ultra Burst)";
         public String dynamaxActivated = "§b{pokemon} has Dynamaxed!";
         public String dynamaxReverted = "§e{pokemon} returned to normal size.";
+        public String noDynamaxBand = "§cYou need a Dynamax Band to use Dynamax! (Equip it in Accessories slots)";
+        public String noPowerSpot = "§cYou must be near a Power Spot to Dynamax! (Range: {range} blocks)";
+        public String noGmaxFactor = "§cThis Pokémon cannot Gigantamax! (Missing G-Max Factor)";
     }
     
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
