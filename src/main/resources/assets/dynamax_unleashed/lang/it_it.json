@@ -7,7 +7,6 @@
   "dynamax_unleashed.button.revert": "Annulla Dynamax",
   
   "dynamax_unleashed.message.cooldown_active": "§cIl tuo Pokémon è troppo stanco per il Dynamax! Aspetta %s secondi.",
-  "dynamax_unleashed.message.no_dynamax_band": "§cHai bisogno di un Polsino Dynamax per usare il Dynamax fuori dalla battaglia!",
   "dynamax_unleashed.message.cannot_dynamax": "§cQuesto Pokémon non può usare il Dynamax!",
   "dynamax_unleashed.message.dynamax_activated": "§b%s ha attivato il Dynamax!",
   "dynamax_unleashed.message.gigantamax_activated": "§d%s ha attivato il Gigamax!",
@@ -17,6 +16,10 @@
   "dynamax_unleashed.message.already_primal": "§cNon puoi usare il Dynamax in forma Primordiale!",
   "dynamax_unleashed.message.already_ultra": "§cNon puoi usare il Dynamax durante l'Ultraesplosione!",
   
+  "dynamax_unleashed.message.no_dynamax_band": "§cHai bisogno di un Polsino Dynamax per usare il Dynamax!",
+  "dynamax_unleashed.message.no_power_spot": "§cDevi essere vicino a un Power Spot per usare il Dynamax!",
+  "dynamax_unleashed.message.no_gmax_factor": "§cQuesto Pokémon non può Gigamaxarsi! (Manca il Fattore Gigamax)",
+  
   "dynamax_unleashed.config.title": "Configurazione Dynamax Unleashed",
   "dynamax_unleashed.config.enabled": "Abilita Dynamax Fuori Battaglia",
   "dynamax_unleashed.config.cooldown": "Tempo di Ricarica (secondi)",
@@ -24,6 +27,11 @@
   "dynamax_unleashed.config.require_band": "Richiedi Polsino Dynamax",
   "dynamax_unleashed.config.allow_gigantamax": "Permetti Forme Gigamax",
   "dynamax_unleashed.config.maintain_requirements": "Mantieni Requisiti Battaglia",
+  "dynamax_unleashed.config.require_dynamax_band": "Richiedi Polsino Dynamax (MSD)",
+  "dynamax_unleashed.config.require_power_spot": "Richiedi Power Spot (MSD)",
+  "dynamax_unleashed.config.power_spot_range": "Raggio Power Spot (blocchi)",
+  "dynamax_unleashed.config.dynamax_anywhere": "Dynamax Ovunque (ignora Power Spot)",
+  "dynamax_unleashed.config.require_gmax_factor": "Richiedi Fattore Gigamax per Gigamaxare",
   
   "dynamax_unleashed.tooltip.cooldown_remaining": "§7Dynamax Disponibile Tra: §c%s secondi",
   "dynamax_unleashed.tooltip.ready": "§aPronto per il Dynamax!",
