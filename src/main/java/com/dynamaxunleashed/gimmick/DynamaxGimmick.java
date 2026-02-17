@@ -4,6 +4,7 @@ import com.cobblemon.mod.common.pokemon.Pokemon;
 import com.dynamaxunleashed.DynamaxUnleashed;
 import com.dynamaxunleashed.cooldown.CooldownManager;
 import com.dynamaxunleashed.config.ModConfig;
+import com.dynamaxunleashed.utils.DynamaxUtils;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 
@@ -48,6 +49,21 @@ public class DynamaxGimmick {
         ModConfig config = DynamaxUnleashed.getConfig();
         CooldownManager cooldownManager = DynamaxUnleashed.getCooldownManager();
         
+        // MSD-compatible check: Dynamax Band requirement
+        if (config.requireDynamaxBand && !DynamaxUtils.hasDynamaxBand(player)) {
+            player.sendMessage(Text.literal(config.messages.noDynamaxBand), false);
+            return;
+        }
+        
+        // MSD-compatible check: Power Spot requirement
+        if (config.requirePowerSpot && !config.dynamaxAnywhere) {
+            if (!DynamaxUtils.isPowerSpotNearby(player, config.powerSpotRange)) {
+                String message = config.messages.noPowerSpot.replace("{range}", String.valueOf(config.powerSpotRange));
+                player.sendMessage(Text.literal(message), false);
+                return;
+            }
+        }
+        
         // Check cooldown
         if (cooldownManager.isOnCooldown(pokemon.getUuid())) {
             int remaining = cooldownManager.getRemainingSeconds(pokemon.getUuid());
@@ -63,16 +79,24 @@ public class DynamaxGimmick {
         }
         
         // Check if has Gigantamax form
-        boolean hasGmax = config.allowGigantamax && hasGigantamaxForm(pokemon);
+        boolean hasGmaxForm = hasGigantamaxForm(pokemon);
+        boolean canUseGmax = config.allowGigantamax && hasGmaxForm;
         
-        if (hasGmax) {
+        // MSD-compatible check: GmaxFactor requirement for Gigantamax
+        if (canUseGmax && config.requireGmaxFactor && !pokemon.getGmaxFactor()) {
+            player.sendMessage(Text.literal(config.messages.noGmaxFactor), false);
+            return;
+        }
+        
+        if (canUseGmax) {
             // Add "gmax" to forcedAspects (auto-syncs client & triggers model change)
             Set<String> newAspects = new HashSet<>(pokemon.getForcedAspects());
             newAspects.add("gmax");
             pokemon.setForcedAspects(newAspects);
             DynamaxUnleashed.LOGGER.info(
-                "{} transformed to Gigantamax (aspect applied via forcedAspects)",
-                pokemon.getSpecies().getName()
+                "{} transformed to Gigantamax (aspect applied via forcedAspects, GmaxFactor: {})",
+                pokemon.getSpecies().getName(),
+                pokemon.getGmaxFactor()
             );
         }
         
