@@ -1,7 +1,7 @@
 package com.dynamaxunleashed.utils;
 
+import com.dynamaxunleashed.tag.DynamaxTags;
 import net.minecraft.block.Block;
-import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -59,18 +59,13 @@ public class DynamaxUtils {
     }
     
     /**
-     * Check if player has a Dynamax Band in their inventory
-     * Simplified version - checks main inventory only (no Accessories support yet)
+     * Check if player has a Dynamax Band equipped in accessories or inventory
+     * Uses Accessories API to check accessory slots, main hand, and offhand
+     * Compatible with Mega Showdown's Dynamax Band item
      * @param player The player to check
-     * @return true if player has at least one Dynamax Band
+     * @return true if player has a Dynamax Band equipped in accessories, main hand, or offhand
      */
     public static boolean hasDynamaxBand(ServerPlayerEntity player) {
-        // TODO: When Accessories support is added, also check accessory slots
-        // Check for "mega_showdown:dynamax_band" in player's inventory
-        Identifier dynamaxBandId = Identifier.of("mega_showdown", "dynamax_band");
-        return player.getInventory().containsAny(stack -> {
-            Identifier itemId = Registries.ITEM.getId(stack.getItem());
-            return itemId.equals(dynamaxBandId);
-        });
+        return AccessoriesUtils.checkTagInAccessories(player, DynamaxTags.Items.DYNAMAX_BAND);
     }
 }
