@@ -57,20 +57,21 @@ public class InteractionGUIHandler {
             
             // Check if already Dynamaxed
             boolean isDynamaxed = DynamaxGimmick.isDynamax(pokemon);
-            boolean canDynamax = DynamaxGimmick.canDynamax(pokemon);
             
             // Make pokemon final for lambda
             final Pokemon finalPokemon = pokemon;
             
+            // Always enable button - let server handle validation and send appropriate messages
             // Create InteractWheelOption for Dynamax
             InteractWheelOption dynamaxOption = new InteractWheelOption(
                 DYNAMAX_ICON,
                 null,                                    // no secondary icon
-                canDynamax || isDynamaxed,              // enabled if can dynamax or already dynamaxed
+                true,                                    // always enabled - server will validate
                 isDynamaxed ? "dynamax_unleashed.button.revert" : "dynamax_unleashed.button.dynamax",
                 () -> new Vector3f(1, 1, 1),           // white color
                 () -> {
-                    // Send packet to server
+                    // Send packet to server for validation and execution
+                    // Server will check all requirements and send appropriate messages
                     NetworkManager.sendToServer(new DynamaxPacket(finalPokemon.getUuid()));
                     
                     // Close GUI
