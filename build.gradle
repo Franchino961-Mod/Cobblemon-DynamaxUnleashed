@@ -16,6 +16,7 @@ repositories {
     maven { url = 'https://maven.impactdev.net/repository/development/' }
     maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
     maven { url = 'https://maven.architectury.dev/' }
+    maven { url = 'https://maven.wispforest.io/releases/' }
 }
 
 dependencies {
@@ -33,6 +34,9 @@ dependencies {
     
     // Kotlin standard library (needed for Cobblemon integration)
     modImplementation "org.jetbrains.kotlin:kotlin-stdlib:1.9.23"
+    
+    // Accessories (for Dynamax Band support)
+    modImplementation "io.wispforest:accessories-fabric:${project.accessories_version}"
 }
 
 processResources {
