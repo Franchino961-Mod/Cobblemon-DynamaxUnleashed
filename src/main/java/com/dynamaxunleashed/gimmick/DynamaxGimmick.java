@@ -5,11 +5,15 @@ import com.dynamaxunleashed.DynamaxUnleashed;
 import com.dynamaxunleashed.cooldown.CooldownManager;
 import com.dynamaxunleashed.config.ModConfig;
 import com.dynamaxunleashed.utils.DynamaxUtils;
+import com.dynamaxunleashed.utils.PokemonAnimationHelper;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 
 import java.util.HashSet;
 import java.util.Set;
+
+// NBT key used to store pre-dynamax tradeable state
+// so we can restore it correctly on revert
 
 /**
  * Manages Dynamax transformation logic
@@ -18,6 +22,7 @@ import java.util.Set;
 public class DynamaxGimmick {
     
     private static final String DYNAMAX_TAG = "is_dynamax";
+    private static final String TRADEABLE_STATE_TAG = "pre_dynamax_tradeable";
     
     /**
      * Toggle Dynamax state for a Pokémon
@@ -103,14 +108,17 @@ public class DynamaxGimmick {
         // Apply scale modifier
         pokemon.setScaleModifier((float) config.dynamaxScale);
         
+        // Play Dynamax animation if entity exists
+        if (pokemon.getEntity() != null) {
+            PokemonAnimationHelper.playDynamaxAnimation(pokemon.getEntity());
+        }
+        
         // Mark as Dynamaxed in persistent data
         pokemon.getPersistentData().putBoolean(DYNAMAX_TAG, true);
         
-        // Make untradeable while Dynamaxed
+        // Save tradeable state before changing it, then make untradeable while Dynamaxed
+        pokemon.getPersistentData().putBoolean(TRADEABLE_STATE_TAG, pokemon.getTradeable());
         pokemon.setTradeable(false);
-        
-        // Start cooldown
-        cooldownManager.startCooldown(pokemon.getUuid());
         
         // Send success message
         String message = config.messages.dynamaxActivated
@@ -131,9 +139,10 @@ public class DynamaxGimmick {
      */
     private static void undynamax(Pokemon pokemon, ServerPlayerEntity player) {
         ModConfig config = DynamaxUnleashed.getConfig();
+        CooldownManager cooldownManager = DynamaxUnleashed.getCooldownManager();
         
-        // Remove "gmax" from forcedAspects if present
-        if (pokemon.getAspects().contains("gmax")) {
+        // Remove "gmax" from forcedAspects if present (check forcedAspects, not all aspects)
+        if (pokemon.getForcedAspects().contains("gmax")) {
             Set<String> newAspects = new HashSet<>(pokemon.getForcedAspects());
             newAspects.remove("gmax");
             pokemon.setForcedAspects(newAspects);
@@ -142,11 +151,21 @@ public class DynamaxGimmick {
         // Reset scale
         pokemon.setScaleModifier(1.0f);
         
+        // Play revert animation if entity exists
+        if (pokemon.getEntity() != null) {
+            PokemonAnimationHelper.playUndynamaxAnimation(pokemon.getEntity());
+        }
+        
         // Remove Dynamax tag
         pokemon.getPersistentData().remove(DYNAMAX_TAG);
         
-        // Make tradeable again
-        pokemon.setTradeable(true);
+        // Restore original tradeable state (saved before dynamax activation)
+        boolean originalTradeable = pokemon.getPersistentData().getBoolean(TRADEABLE_STATE_TAG);
+        pokemon.setTradeable(originalTradeable);
+        pokemon.getPersistentData().remove(TRADEABLE_STATE_TAG);
+        
+        // Start cooldown now (on revert, not on activation)
+        cooldownManager.startCooldown(pokemon.getUuid());
         
         // Send message
         String message = config.messages.dynamaxReverted
@@ -192,14 +211,57 @@ public class DynamaxGimmick {
         return pokemon.getSpecies().getForms().stream()
             .anyMatch(form -> form.getName().toLowerCase().contains("gmax"));
     }
-    
+
     /**
-     * Get the Gigantamax form for a Pokémon
+     * Admin-only: Force apply Dynamax, bypassing all requirements (band, power spot, cooldown, form checks).
+     * Called from /dynamax <player> <slot> command.
      */
-    private static com.cobblemon.mod.common.pokemon.FormData getGigantamaxForm(Pokemon pokemon) {
-        return pokemon.getSpecies().getForms().stream()
-            .filter(form -> form.getName().toLowerCase().contains("gmax"))
-            .findFirst()
-            .orElse(null);
+    public static void dynamaxForce(Pokemon pokemon, ServerPlayerEntity player) {
+        ModConfig config = DynamaxUnleashed.getConfig();
+
+        boolean hasGmaxForm = hasGigantamaxForm(pokemon);
+        if (config.allowGigantamax && hasGmaxForm) {
+            Set<String> newAspects = new HashSet<>(pokemon.getForcedAspects());
+            newAspects.add("gmax");
+            pokemon.setForcedAspects(newAspects);
+        }
+
+        pokemon.setScaleModifier((float) config.dynamaxScale);
+
+        if (pokemon.getEntity() != null) {
+            PokemonAnimationHelper.playDynamaxAnimation(pokemon.getEntity());
+        }
+
+        pokemon.getPersistentData().putBoolean(DYNAMAX_TAG, true);
+        pokemon.getPersistentData().putBoolean(TRADEABLE_STATE_TAG, pokemon.getTradeable());
+        pokemon.setTradeable(false);
+
+        DynamaxUnleashed.LOGGER.info("[Admin] Force-dynamaxed {} for player {}", pokemon.getSpecies().getName(), player.getName().getString());
+    }
+
+    /**
+     * Admin-only: Force revert Dynamax, bypassing cooldown.
+     * Called from /dynamax <player> <slot> command.
+     */
+    public static void undynamaxForce(Pokemon pokemon, ServerPlayerEntity player) {
+        if (pokemon.getForcedAspects().contains("gmax")) {
+            Set<String> newAspects = new HashSet<>(pokemon.getForcedAspects());
+            newAspects.remove("gmax");
+            pokemon.setForcedAspects(newAspects);
+        }
+
+        pokemon.setScaleModifier(1.0f);
+
+        if (pokemon.getEntity() != null) {
+            PokemonAnimationHelper.playUndynamaxAnimation(pokemon.getEntity());
+        }
+
+        pokemon.getPersistentData().remove(DYNAMAX_TAG);
+
+        boolean originalTradeable = pokemon.getPersistentData().getBoolean(TRADEABLE_STATE_TAG);
+        pokemon.setTradeable(originalTradeable);
+        pokemon.getPersistentData().remove(TRADEABLE_STATE_TAG);
+
+        DynamaxUnleashed.LOGGER.info("[Admin] Force-reverted {} for player {}", pokemon.getSpecies().getName(), player.getName().getString());
     }
 }
