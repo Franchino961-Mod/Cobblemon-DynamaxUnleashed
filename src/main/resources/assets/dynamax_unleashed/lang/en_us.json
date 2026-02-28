@@ -19,6 +19,7 @@
   "dynamax_unleashed.message.no_dynamax_band": "§cYou need a Dynamax Band to use Dynamax!",
   "dynamax_unleashed.message.no_power_spot": "§cYou must be near a Power Spot to Dynamax!",
   "dynamax_unleashed.message.no_gmax_factor": "§cThis Pokémon cannot Gigantamax! (Missing G-Max Factor)",
+  "dynamax_unleashed.message.pokemon_not_found": "§cPokémon not found in your party!",
   
   "dynamax_unleashed.config.title": "Dynamax Unleashed Config",
   "dynamax_unleashed.config.enabled": "Enable Overworld Dynamax",
@@ -37,5 +38,10 @@
   "dynamax_unleashed.tooltip.ready": "§aReady to Dynamax!",
   
   "dynamax_unleashed.command.clear_cooldown": "Cleared Dynamax cooldown for %s",
-  "dynamax_unleashed.command.clear_all": "Cleared all Dynamax cooldowns (%s total)"
+  "dynamax_unleashed.command.clear_all": "Cleared all Dynamax cooldowns (%s total)",
+  "dynamax_unleashed.command.reload_success": "§aDynamax Unleashed config reloaded successfully!",
+  "dynamax_unleashed.command.reload_fail": "§cFailed to reload config: %s",
+  "dynamax_unleashed.command.force_dynamaxed": "§a[Admin] Dynamaxed %s (slot %d) for %s",
+  "dynamax_unleashed.command.force_reverted": "§a[Admin] Reverted %s (slot %d) for %s",
+  "dynamax_unleashed.command.cooldown_cleared": "§aCleared Dynamax cooldowns for %d Pokémon of %s"
 }
