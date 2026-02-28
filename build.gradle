@@ -2,6 +2,7 @@ plugins {
     id 'fabric-loom' version '1.7-SNAPSHOT'
     id 'maven-publish'
     id 'architectury-plugin' version '3.4-SNAPSHOT'
+
 }
 
 version = project.mod_version
@@ -29,11 +30,11 @@ dependencies {
     // Architectury API
     modImplementation "dev.architectury:architectury-fabric:${project.architectury_version}"
     
-    // Cobblemon (includes Kotlin)
+    // Cobblemon (already includes Kotlin as transitive dependency)
     modImplementation "com.cobblemon:fabric:${project.cobblemon_version}"
     
-    // Kotlin standard library (needed for Cobblemon integration)
-    modImplementation "org.jetbrains.kotlin:kotlin-stdlib:1.9.23"
+    // Kotlin stdlib (needed for compile-time references like kotlin.Unit in InteractionGUIHandler)
+    compileOnly "org.jetbrains.kotlin:kotlin-stdlib:2.1.0"
     
     // Accessories (for Dynamax Band support)
     modImplementation "io.wispforest:accessories-fabric:${project.accessories_version}"
