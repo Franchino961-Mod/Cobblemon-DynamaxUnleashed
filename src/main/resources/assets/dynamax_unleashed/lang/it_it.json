@@ -1,25 +1,21 @@
 {
   "dynamax_unleashed.name": "Dynamax Unleashed",
   "dynamax_unleashed.description": "Permette ai Pokémon di usare Dynamax e Gigamax fuori dalla battaglia",
-  
   "dynamax_unleashed.button.dynamax": "Dynamax",
   "dynamax_unleashed.button.gigantamax": "Gigamax",
   "dynamax_unleashed.button.revert": "Annulla Dynamax",
-  
   "dynamax_unleashed.message.cooldown_active": "§cIl tuo Pokémon è troppo stanco per il Dynamax! Aspetta %s secondi.",
   "dynamax_unleashed.message.cannot_dynamax": "§cQuesto Pokémon non può usare il Dynamax!",
   "dynamax_unleashed.message.dynamax_activated": "§b%s ha attivato il Dynamax!",
   "dynamax_unleashed.message.gigantamax_activated": "§d%s ha attivato il Gigamax!",
   "dynamax_unleashed.message.dynamax_reverted": "§e%s è tornato alla dimensione normale.",
-  
   "dynamax_unleashed.message.already_mega": "§cNon puoi usare il Dynamax mentre sei Megaevoluto!",
   "dynamax_unleashed.message.already_primal": "§cNon puoi usare il Dynamax in forma Primordiale!",
   "dynamax_unleashed.message.already_ultra": "§cNon puoi usare il Dynamax durante l'Ultraesplosione!",
-  
   "dynamax_unleashed.message.no_dynamax_band": "§cHai bisogno di un Polsino Dynamax per usare il Dynamax!",
   "dynamax_unleashed.message.no_power_spot": "§cDevi essere vicino a un Power Spot per usare il Dynamax!",
   "dynamax_unleashed.message.no_gmax_factor": "§cQuesto Pokémon non può Gigamaxarsi! (Manca il Fattore Gigamax)",
-  
+  "dynamax_unleashed.message.pokemon_not_found": "§cPokémon non trovato nella tua squadra!",
   "dynamax_unleashed.config.title": "Configurazione Dynamax Unleashed",
   "dynamax_unleashed.config.enabled": "Abilita Dynamax Fuori Battaglia",
   "dynamax_unleashed.config.cooldown": "Tempo di Ricarica (secondi)",
@@ -32,10 +28,13 @@
   "dynamax_unleashed.config.power_spot_range": "Raggio Power Spot (blocchi)",
   "dynamax_unleashed.config.dynamax_anywhere": "Dynamax Ovunque (ignora Power Spot)",
   "dynamax_unleashed.config.require_gmax_factor": "Richiedi Fattore Gigamax per Gigamaxare",
-  
   "dynamax_unleashed.tooltip.cooldown_remaining": "§7Dynamax Disponibile Tra: §c%s secondi",
   "dynamax_unleashed.tooltip.ready": "§aPronto per il Dynamax!",
-  
   "dynamax_unleashed.command.clear_cooldown": "Cooldown Dynamax rimosso per %s",
-  "dynamax_unleashed.command.clear_all": "Tutti i cooldown Dynamax rimossi (%s totale)"
+  "dynamax_unleashed.command.clear_all": "Tutti i cooldown Dynamax rimossi (%s totale)",
+  "dynamax_unleashed.command.reload_success": "§aConfigurazione di Dynamax Unleashed ricaricata con successo!",
+  "dynamax_unleashed.command.reload_fail": "§cErrore nel ricaricare la configurazione: %s",
+  "dynamax_unleashed.command.force_dynamaxed": "§a[Admin] %s (slot %d) di %s ha usato Dynamax",
+  "dynamax_unleashed.command.force_reverted": "§a[Admin] %s (slot %d) di %s è stato annullato dal Dynamax",
+  "dynamax_unleashed.command.cooldown_cleared": "§aCooldown Dynamax rimossi per %d Pokémon di %s"
 }
