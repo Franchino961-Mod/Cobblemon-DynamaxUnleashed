@@ -2,6 +2,8 @@
 
 A Cobblemon addon mod that allows Pokémon to Dynamax and Gigantamax outside of battle with a configurable cooldown system!
 
+[![Download on CurseForge](https://img.shields.io/badge/Download_on-CurseForge-orange?style=for-the-badge&logo=curseforge)](https://www.curseforge.com/minecraft/mc-mods/cobblemon-dynamax-unleashed)
+
 [![en](https://img.shields.io/badge/lang-en-red.svg)](README.md)
 [![it](https://img.shields.io/badge/lang-it-green.svg)](MD/README.it.md)
 
@@ -254,7 +256,7 @@ The compiled `.jar` file will be in `build/libs/dynamax-unleashed-1.2.0.jar`
 
 ## 📝 License
 
-This mod is released under the MIT license. Feel free to include it in your modpacks!
+This mod is licensed under the [MIT License](../LICENSE). Feel free to include it in your modpacks!
 
 ## 🐛 Bug Reports
 

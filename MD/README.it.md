@@ -2,14 +2,20 @@
 
 Una mod addon per Cobblemon che permette ai Pokémon di usare Dynamax e Gigantamax fuori dalla battaglia con un sistema di cooldown configurabile!
 
+[![Download on CurseForge](https://img.shields.io/badge/Download_on-CurseForge-orange?style=for-the-badge&logo=curseforge)](https://www.curseforge.com/minecraft/mc-mods/cobblemon-dynamax-unleashed)
+
 [![en](https://img.shields.io/badge/lang-en-red.svg)](../README.md)
 [![it](https://img.shields.io/badge/lang-it-green.svg)](README.it.md)
 
-📜 **[Visualizza Changelog](CHANGELOG.md)** | 🏷️ **Versione Corrente: 1.2.0**
+> 📜 **Changelog**: Vedi [CHANGELOG.it.md](CHANGELOG.it.md) per tutti gli aggiornamenti e modifiche.
+
+---
 
 ## 📋 Descrizione
 
 Questa mod estende la funzionalità Dynamax di Cobblemon oltre le battaglie, permettendo ai tuoi Pokémon di trasformarsi nelle loro forme giganti Dynamax o Gigantamax nell'overworld. Perfetta per mostrare i tuoi Pokémon preferiti o semplicemente per divertirsi con le loro forme massicce!
+
+---
 
 ## ✨ Caratteristiche
 
@@ -25,6 +31,8 @@ Questa mod estende la funzionalità Dynamax di Cobblemon oltre le battaglie, per
 - **🌍 Multilingua**: Traduzioni in inglese e italiano incluse
 - **⚙️ Completamente Configurabile**: Personalizza ogni aspetto tramite file di configurazione
 
+---
+
 ## 📋 Requisiti
 
 - **Minecraft**: 1.21.1
@@ -36,6 +44,8 @@ Questa mod estende la funzionalità Dynamax di Cobblemon oltre le battaglie, per
 - **Java**: 21 o superiore
 
 > ⚠️ **Importante**: Mega Showdown è obbligatorio in quanto fornisce i modelli 3D e le texture Gigantamax. Senza, i Pokémon aumenteranno solo di dimensione senza cambiamenti visivi al modello.
+
+---
 
 ## 📦 Installazione
 
@@ -231,9 +241,11 @@ Il file `.jar` compilato sarà in `build/libs/dynamax-unleashed-1.1.0.jar`
 - [ ] Integrazione ModMenu per GUI di configurazione in-game
 - [ ] Sistema di permessi per server multiplayer
 
+---
+
 ## 📝 Licenza
 
-Questa mod è rilasciata sotto licenza MIT. Sentiti libero di includerla nei tuoi modpack!
+Questa mod è distribuita sotto licenza [MIT](../LICENSE). Sentiti libero di includerla nei tuoi modpack!
 
 ## 🐛 Segnalazione Bug
 
