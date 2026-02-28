@@ -3,9 +3,9 @@
 A Cobblemon addon mod that allows Pokémon to Dynamax and Gigantamax outside of battle with a configurable cooldown system!
 
 [![en](https://img.shields.io/badge/lang-en-red.svg)](README.md)
-[![it](https://img.shields.io/badge/lang-it-green.svg)](README.it.md)
+[![it](https://img.shields.io/badge/lang-it-green.svg)](MD/README.it.md)
 
-📜 **[View Changelog](CHANGELOG.md)** | 🏷️ **Current Version: 1.1.0**
+📜 **[View Changelog](MD/CHANGELOG.en.md)** | 🏷️ **Current Version: 1.2.0**
 
 ## 📋 Description
 
@@ -14,16 +14,17 @@ This mod extends Cobblemon's Dynamax feature beyond battles, allowing your Poké
 ## ✨ Features
 
 - **🔴 Overworld Dynamax**: Use Dynamax anywhere, not just in battle
-- **⭐ Mega Showdown Integration**: Full compatibility with MSD requirements (v1.1.0)
+- **⭐ Mega Showdown Integration**: Full compatibility with MSD requirements
   - **Dynamax Band Required**: Players need a Dynamax Band to use Dynamax
-  - **Power Spot Proximity**: Must be near a Power Spot block (20 block range)
+  - **Power Spot Proximity**: Must be near a Power Spot block (configurable range, default: 20 blocks)
   - **G-Max Factor Validation**: Pokémon must have G-Max Factor for Gigantamax forms
-- **⏱️ Cooldown System**: Configurable cooldown between uses (default: 60 seconds)
+- **⏱️ Cooldown System**: Configurable cooldown between uses (default: 60 seconds, starts on revert)
 - **📏 Configurable Scale**: Adjust Pokémon size when Dynamaxed (default: 2.0x)
 - **🎨 Gigantamax Support**: All Gigantamax forms with full 3D models
 - **🛡️ Battle Requirements**: Prevents Dynamax during Mega Evolution, Primal, Ultra Burst
 - **🌍 Multilingual**: English and Italian translations included
-- **⚙️ Fully Configurable**: Customize every aspect via config file
+- **⚙️ Fully Configurable**: Customize every aspect via config file, with auto-validation of values
+- **🔧 Admin Commands**: Full admin control via `/dynamax` subcommands
 
 ## 📋 Requirements
 
@@ -100,24 +101,27 @@ The configuration file is located at `config/dynamax-unleashed.json`:
     "dynamaxReverted": "§e{pokemon} returned to normal size.",
     "noDynamaxBand": "§cYou need a Dynamax Band to use Dynamax!",
     "noPowerSpot": "§cYou must be near a Power Spot to use Dynamax!",
-    "noGmaxFactor": "§cThis Pokémon cannot Gigantamax! (Missing G-Max Factor)"
+    "noGmaxFactor": "§cThis Pokémon cannot Gigantamax! (Missing G-Max Factor)",
+    "pokemonNotFound": "§cPokémon not found in your party!"
   }
 }
 ```
+
+> 💡 **Note**: Invalid config values (negative cooldown, zero scale, etc.) are automatically reset to defaults on load.
 
 ### Configuration Options
 
 | Option | Description | Default |
 |--------|-------------|---------|
 | `enabled` | Enable/disable the mod | `true` |
-| `cooldownSeconds` | Cooldown time in seconds | `60` |
-| `dynamaxScale` | Size multiplier (1.0 = normal) | `2.0` |
+| `cooldownSeconds` | Cooldown time in seconds (≥ 0) | `60` |
+| `dynamaxScale` | Size multiplier, must be > 0 (1.0 = normal) | `2.0` |
 | `showCooldownMessage` | Show cooldown messages to players | `true` |
 | `allowGigantamax` | Allow Gigantamax forms | `true` |
 | `maintainBattleRequirements` | Use same requirements as battle | `true` |
-| `requireDynamaxBand` | **[v1.1.0]** Require Dynamax Band in inventory | `true` |
+| `requireDynamaxBand` | **[v1.1.0]** Require Dynamax Band in accessories | `true` |
 | `requirePowerSpot` | **[v1.1.0]** Require Power Spot proximity | `true` |
-| `powerSpotRange` | **[v1.1.0]** Power Spot search radius in blocks | `20` |
+| `powerSpotRange` | **[v1.1.0]** Power Spot search radius in blocks (1-256) | `20` |
 | `dynamaxAnywhere` | **[v1.1.0]** Bypass Power Spot requirement | `false` |
 | `requireGmaxFactor` | **[v1.1.0]** Require G-Max Factor for Gigantamax | `true` |
 
@@ -169,8 +173,10 @@ dynamax-unleashed/
 │   ├── java/com/dynamaxunleashed/
 │   │   ├── DynamaxUnleashed.java           # Main mod entry
 │   │   ├── DynamaxUnleashedClient.java     # Client entry
+│   │   ├── command/
+│   │   │   └── DynamaxCommand.java         # Admin commands (force/clear/reload)
 │   │   ├── config/
-│   │   │   └── ModConfig.java              # Configuration
+│   │   │   └── ModConfig.java              # Configuration + validation
 │   │   ├── cooldown/
 │   │   │   └── CooldownManager.java        # Cooldown tracking
 │   │   ├── gimmick/
@@ -179,14 +185,19 @@ dynamax-unleashed/
 │   │   │   └── InteractionGUIHandler.java  # GUI integration
 │   │   ├── networking/
 │   │   │   ├── DynamaxPacket.java          # C2S packet
-│   │   │   ├── DynamaxPacketHandler.java   # Packet handler
+│   │   │   ├── DynamaxPacketHandler.java   # Packet handler + rate-limit
 │   │   │   └── DynamaxNetworking.java      # Network registration
-│   │   └── util/
-│   │       └── PlayerUtils.java            # Helper utilities
+│   │   ├── tag/
+│   │   │   └── DynamaxTags.java            # Item tags (Dynamax Band)
+│   │   └── utils/
+│   │       ├── AccessoriesUtils.java       # Accessories API integration
+│   │       ├── DynamaxUtils.java           # Requirements validation
+│   │       ├── PlayerUtils.java            # Party lookup helpers
+│   │       └── PokemonAnimationHelper.java # Animation packet helper
 │   └── resources/
 │       ├── fabric.mod.json                 # Mod metadata
 │       ├── dynamax-unleashed.mixins.json   # Mixin config
-│       └── assets/dynamax-unleashed/
+│       └── assets/dynamax_unleashed/
 │           ├── lang/
 │           │   ├── en_us.json              # English translations
 │           │   └── it_it.json              # Italian translations
@@ -215,22 +226,31 @@ cd dynamax-unleashed
 .\gradlew.bat build
 ```
 
-The compiled `.jar` file will be in `build/libs/dynamax-unleashed-1.1.0.jar`
+The compiled `.jar` file will be in `build/libs/dynamax-unleashed-1.2.0.jar`
 
 ## 📝 Known Issues
 
 - Cooldown persistence between server restarts not yet implemented
 - No visual effects or particles when activating Dynamax
-- Dynamax Band detection only checks main inventory (Accessories API integration planned)
-- Power Spot requirement requires Mega Showdown to be installed (provides the block tag)
+- Dynamax button in GUI does not show cooldown status visually (always appears active)
 
 ## 🚀 Planned Features
 
-- [ ] Admin command `/dynamax clear <player/pokemon>` to reset cooldowns
+- [x] ~~Admin command `/dynamax clear <player>` to reset cooldowns~~ *(added in v1.2.0)*
+- [x] ~~Hot-reload config with `/dynamax reload`~~ *(added in v1.2.0)*
 - [ ] Visual particles when activating Dynamax
 - [ ] Custom sound effects
 - [ ] ModMenu integration for in-game config GUI
 - [ ] Permission system for multiplayer servers
+- [ ] Visual cooldown indicator on the Dynamax button in the interaction wheel
+
+## 🔧 Admin Commands
+
+| Command | Description | Permission |
+|---------|-------------|------------|
+| `/dynamax <player> <slot>` | Force-toggle Dynamax, bypassing all requirements | OP 2 |
+| `/dynamax clear <player>` | Reset Dynamax cooldowns for all Pokémon in party | OP 2 |
+| `/dynamax reload` | Reload config from disk without restart | OP 4 |
 
 ## 📝 License
 
