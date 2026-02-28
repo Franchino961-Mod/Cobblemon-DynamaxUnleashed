@@ -26,6 +26,10 @@ public class DynamaxUnleashed implements ModInitializer {
     public static ModConfig getConfig() {
         return config;
     }
+
+    public static void setConfig(ModConfig newConfig) {
+        config = newConfig;
+    }
     
     public static CooldownManager getCooldownManager() {
         return cooldownManager;
