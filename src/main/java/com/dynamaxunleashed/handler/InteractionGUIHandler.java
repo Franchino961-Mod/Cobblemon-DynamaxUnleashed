@@ -32,7 +32,7 @@ public class InteractionGUIHandler {
      */
     public static void register() {
         CobblemonEvents.POKEMON_INTERACTION_GUI_CREATION.subscribe(Priority.NORMAL, event -> {
-            DynamaxUnleashed.LOGGER.info("EVENT FIRED! PokemonID: {}", event.getPokemonID());
+            DynamaxUnleashed.LOGGER.debug("POKEMON_INTERACTION_GUI_CREATION event fired. PokemonID: {}", event.getPokemonID());
             
             // Get Pokemon from client storage by entity UUID (not pokemon UUID)
             Pokemon pokemon = null;
