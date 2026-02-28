@@ -1,51 +1,43 @@
-# Gradle
-.gradle/
+.gradle
 build/
-out/
-classes/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-# Eclipse
-*.launch
-.settings/
-.metadata/
-.classpath
-.project
+### IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### Eclipse ###
 .apt_generated
+.classpath
 .factorypath
+.project
+.settings
 .springBeans
 .sts4-cache
 bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
 
-# IntelliJ IDEA
-.idea/
-*.iml
-*.ipr
-*.iws
-!**/src/main/**/out/
-!**/src/test/**/out/
-
-# VS Code
+### VS Code ###
 .vscode/
 
-# Fabric/Loom
-run/
-logs/
-.fabric/
-remapped/
-loom-cache/
-
-# macOS
+### Mac OS ###
 .DS_Store
 
-# Windows
-Thumbs.db
-
-# Misc
+### Minecraft ###
+run/
+logs/
 *.log
-*.jar
-!gradle-wrapper.jar
+
+### Private File ###
+IMPLEMENTATION_PLAN.md
+TESTING_STATUS.md
+TODO.it.md
+*.pdn
