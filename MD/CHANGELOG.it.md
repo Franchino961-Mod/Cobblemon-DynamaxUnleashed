@@ -1,9 +1,16 @@
-# Changelog
+# Changelog - Dynamax Unleashed
 
 Tutte le modifiche rilevanti a Dynamax Unleashed verranno documentate in questo file.
 
 Il formato è basato su [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 e questo progetto aderisce al [Versionamento Semantico](https://semver.org/spec/v2.0.0.html).
+
+---
+
+## [Non Rilasciato]
+
+### Pianificato
+- //
 
 ---
 
