@@ -1,13 +1,18 @@
-# Dynamax Unleashed
+# 🔴 Dynamax Unleashed
 
 A Cobblemon addon mod that allows Pokémon to Dynamax and Gigantamax outside of battle with a configurable cooldown system!
 
 [![Download on CurseForge](https://img.shields.io/badge/Download_on-CurseForge-orange?style=for-the-badge&logo=curseforge)](https://www.curseforge.com/minecraft/mc-mods/cobblemon-dynamax-unleashed)
 
+[![Minecraft](https://img.shields.io/badge/Minecraft-1.21.1-green.svg)](https://www.minecraft.net/)
+[![Version](https://img.shields.io/badge/version-1.2.0-blue.svg)]()
+[![Fabric](https://img.shields.io/badge/Fabric-0.16.9-blue.svg)](https://fabricmc.net/)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 [![en](https://img.shields.io/badge/lang-en-red.svg)](README.md)
 [![it](https://img.shields.io/badge/lang-it-green.svg)](MD/README.it.md)
 
-📜 **[View Changelog](MD/CHANGELOG.en.md)** | 🏷️ **Current Version: 1.2.0**
+> 📝 **Changelog**: See [CHANGELOG.en.md](MD/CHANGELOG.en.md) for version history.
 
 ## 📋 Description
 
@@ -28,7 +33,7 @@ This mod extends Cobblemon's Dynamax feature beyond battles, allowing your Poké
 - **⚙️ Fully Configurable**: Customize every aspect via config file, with auto-validation of values
 - **🔧 Admin Commands**: Full admin control via `/dynamax` subcommands
 
-## 📋 Requirements
+## 📦 Requirements
 
 - **Minecraft**: 1.21.1
 - **Fabric Loader**: 0.16.0 or higher
@@ -209,27 +214,6 @@ dynamax-unleashed/
     └── dynamax-unleashed.json              # Default config
 ```
 
-### Building from Source
-
-**Requirements:**
-- JDK 21 or higher
-- Git (optional)
-
-**Steps:**
-```bash
-# Clone or download the repository
-git clone <repository-url>
-cd dynamax-unleashed
-
-# Build the mod
-./gradlew build
-
-# On Windows, use:
-.\gradlew.bat build
-```
-
-The compiled `.jar` file will be in `build/libs/dynamax-unleashed-1.2.0.jar`
-
 ## 📝 Known Issues
 
 - Cooldown persistence between server restarts not yet implemented
@@ -251,34 +235,51 @@ The compiled `.jar` file will be in `build/libs/dynamax-unleashed-1.2.0.jar`
 | Command | Description | Permission |
 |---------|-------------|------------|
 | `/dynamax <player> <slot>` | Force-toggle Dynamax, bypassing all requirements | OP 2 |
-| `/dynamax clear <player>` | Reset Dynamax cooldowns for all Pokémon in party | OP 2 |
-| `/dynamax reload` | Reload config from disk without restart | OP 4 |
+| `/dynamax clear <player>` | Reset Dynamax cooldowns for all Pokémon in party | OP 2 || `/dynamax reload` | Reload config from disk without restart | OP 4 |
+## 📄 License
 
-## 📝 License
+This mod is licensed under the [MIT License](LICENSE). Feel free to include it in your modpacks!
 
-This mod is licensed under the [MIT License](../LICENSE). Feel free to include it in your modpacks!
+## 👤 Author
 
-## 🐛 Bug Reports
-
-If you encounter issues or bugs, please report them with:
-- Mod version
-- Minecraft/Fabric/Cobblemon/Architectury API versions
-- Detailed description of the problem
-- Crash logs (if applicable)
-- Steps to reproduce
+**Franchino961** — [GitHub](https://github.com/Franchino961-Mod)
 
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
+- Open an [Issue](../../issues) to report bugs or suggest features
+- Open a [Pull Request](../../pulls) to contribute code
 
-## 👏 Credits
+## 💬 Support
 
-- **Cobblemon Team** - For the amazing Pokémon mod and comprehensive API
-- **Mega Showdown Team** - For the Gigantamax 3D models, textures, animations, and base Dynamax implementation that this mod builds upon
-- **Architectury Team** - For the cross-platform networking API
-- **Modding Community** - For support and testing
+If you encounter issues or bugs, please report them with:
+- Mod version
+- Minecraft / Fabric / Cobblemon / Architectury API versions
+- Detailed description of the problem
+- Crash logs (if applicable)
+- Steps to reproduce
+- [Open an Issue](../../issues)
+
+## 🙏 Credits
+
+- **Cobblemon Team** — For the amazing Pokémon mod and comprehensive API
+- **Mega Showdown Team** — For the Gigantamax 3D models, textures, animations, and base Dynamax implementation that this mod builds upon
+- **Architectury Team** — For the cross-platform networking API
+- **Modding Community** — For support and testing
 
 > 📝 **Special Thanks**: This mod utilizes the Gigantamax assets created by the Mega Showdown team. All Gigantamax models, textures, and animations are part of the Mega Showdown mod.
+
+## 🔗 Links
+
+- [CurseForge](https://www.curseforge.com/minecraft/mc-mods/cobblemon-dynamax-unleashed)
+- [Cobblemon Mod](https://cobblemon.com)
+- [CobblemonMegaShowdown](https://www.curseforge.com/minecraft/mc-mods/cobblemon-megashowdown) — Required mod
+- [Architectury API](https://www.curseforge.com/minecraft/mc-mods/architectury-api)
+- [Fabric](https://fabricmc.net/)
+
+## 📝 Changelog
+
+See [CHANGELOG.en.md](MD/CHANGELOG.en.md) for full version history.
 
 ---
 
