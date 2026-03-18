@@ -14,6 +14,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.2.1] - 2026-03-18
+
+### Fixed
+- **Size Variation Preservation on Revert** — Fixed an issue where Pokémon with non-default size variations (e.g. Huge) could revert to average size after un-Dynamax/un-Gigantamax. The mod now stores each Pokémon's original scale modifier before Dynamax and restores it correctly on revert.
+- **Force Command Scale Restore** — Applied the same scale-preservation logic to admin force operations (`dynamaxForce()` / `undynamaxForce()`), ensuring consistent behavior across normal and forced toggles.
+
+---
+
 ## [1.2.0] - 2026-02-28
 
 ### Added
@@ -129,5 +137,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **PATCH** (1.1.X) - Bug fixes, minor improvements
 
 [1.2.0]: https://github.com/Franchino961-Mod/Cobblemon-DynamaxUnleashed/releases/tag/v1.2.0
+[1.2.1]: https://github.com/Franchino961-Mod/Cobblemon-DynamaxUnleashed/releases/tag/v1.2.1
 [1.1.0]: https://github.com/Franchino961-Mod/Cobblemon-DynamaxUnleashed/releases/tag/v1.1.0
 [1.0.0]: https://github.com/Franchino961-Mod/Cobblemon-DynamaxUnleashed/releases/tag/v1.0.0
