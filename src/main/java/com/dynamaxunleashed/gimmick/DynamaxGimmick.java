@@ -23,6 +23,7 @@ public class DynamaxGimmick {
     
     private static final String DYNAMAX_TAG = "is_dynamax";
     private static final String TRADEABLE_STATE_TAG = "pre_dynamax_tradeable";
+    private static final String SCALE_STATE_TAG = "pre_dynamax_scale_modifier";
     
     /**
      * Toggle Dynamax state for a Pokémon
@@ -104,6 +105,11 @@ public class DynamaxGimmick {
                 pokemon.getGmaxFactor()
             );
         }
+
+        // Save original scale before applying Dynamax scale, so size variations can be restored.
+        if (!pokemon.getPersistentData().contains(SCALE_STATE_TAG)) {
+            pokemon.getPersistentData().putFloat(SCALE_STATE_TAG, pokemon.getScaleModifier());
+        }
         
         // Apply scale modifier
         pokemon.setScaleModifier((float) config.dynamaxScale);
@@ -148,8 +154,11 @@ public class DynamaxGimmick {
             pokemon.setForcedAspects(newAspects);
         }
         
-        // Reset scale
-        pokemon.setScaleModifier(1.0f);
+        // Restore original scale (Huge/Small/etc.) if saved; fallback to legacy default.
+        float originalScale = pokemon.getPersistentData().contains(SCALE_STATE_TAG)
+            ? pokemon.getPersistentData().getFloat(SCALE_STATE_TAG)
+            : 1.0f;
+        pokemon.setScaleModifier(originalScale);
         
         // Play revert animation if entity exists
         if (pokemon.getEntity() != null) {
@@ -158,6 +167,7 @@ public class DynamaxGimmick {
         
         // Remove Dynamax tag
         pokemon.getPersistentData().remove(DYNAMAX_TAG);
+        pokemon.getPersistentData().remove(SCALE_STATE_TAG);
         
         // Restore original tradeable state (saved before dynamax activation)
         boolean originalTradeable = pokemon.getPersistentData().getBoolean(TRADEABLE_STATE_TAG);
@@ -226,6 +236,10 @@ public class DynamaxGimmick {
             pokemon.setForcedAspects(newAspects);
         }
 
+        if (!pokemon.getPersistentData().contains(SCALE_STATE_TAG)) {
+            pokemon.getPersistentData().putFloat(SCALE_STATE_TAG, pokemon.getScaleModifier());
+        }
+
         pokemon.setScaleModifier((float) config.dynamaxScale);
 
         if (pokemon.getEntity() != null) {
@@ -250,13 +264,17 @@ public class DynamaxGimmick {
             pokemon.setForcedAspects(newAspects);
         }
 
-        pokemon.setScaleModifier(1.0f);
+        float originalScale = pokemon.getPersistentData().contains(SCALE_STATE_TAG)
+            ? pokemon.getPersistentData().getFloat(SCALE_STATE_TAG)
+            : 1.0f;
+        pokemon.setScaleModifier(originalScale);
 
         if (pokemon.getEntity() != null) {
             PokemonAnimationHelper.playUndynamaxAnimation(pokemon.getEntity());
         }
 
         pokemon.getPersistentData().remove(DYNAMAX_TAG);
+        pokemon.getPersistentData().remove(SCALE_STATE_TAG);
 
         boolean originalTradeable = pokemon.getPersistentData().getBoolean(TRADEABLE_STATE_TAG);
         pokemon.setTradeable(originalTradeable);
