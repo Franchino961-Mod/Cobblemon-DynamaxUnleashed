@@ -10,9 +10,9 @@ A Cobblemon addon mod that allows Pokémon to Dynamax and Gigantamax outside of 
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 [![en](https://img.shields.io/badge/lang-en-red.svg)](README.md)
-[![it](https://img.shields.io/badge/lang-it-green.svg)](MD/README.it.md)
+[![it](https://img.shields.io/badge/lang-it-green.svg)](Docs/README.it.md)
 
-> 📝 **Changelog**: See [CHANGELOG.en.md](MD/CHANGELOG.en.md) for version history.
+> 📝 **Changelog**: See [CHANGELOG.en.md](Docs/CHANGELOG.en.md) for version history.
 
 ## 📋 Description
 
@@ -279,7 +279,7 @@ If you encounter issues or bugs, please report them with:
 
 ## 📝 Changelog
 
-See [CHANGELOG.en.md](MD/CHANGELOG.en.md) for full version history.
+See [CHANGELOG.en.md](Docs/CHANGELOG.en.md) for full version history.
 
 ---
 
