@@ -94,6 +94,11 @@ public class DynamaxGimmick {
             return;
         }
         
+        // Save original scale before applying Dynamax scale, so size variations can be restored.
+        if (!pokemon.getPersistentData().contains(SCALE_STATE_TAG)) {
+            pokemon.getPersistentData().putFloat(SCALE_STATE_TAG, pokemon.getScaleModifier());
+        }
+
         if (canUseGmax) {
             // Add "gmax" to forcedAspects (auto-syncs client & triggers model change)
             Set<String> newAspects = new HashSet<>(pokemon.getForcedAspects());
@@ -104,11 +109,6 @@ public class DynamaxGimmick {
                 pokemon.getSpecies().getName(),
                 pokemon.getGmaxFactor()
             );
-        }
-
-        // Save original scale before applying Dynamax scale, so size variations can be restored.
-        if (!pokemon.getPersistentData().contains(SCALE_STATE_TAG)) {
-            pokemon.getPersistentData().putFloat(SCALE_STATE_TAG, pokemon.getScaleModifier());
         }
         
         // Apply scale modifier
@@ -229,15 +229,15 @@ public class DynamaxGimmick {
     public static void dynamaxForce(Pokemon pokemon, ServerPlayerEntity player) {
         ModConfig config = DynamaxUnleashed.getConfig();
 
+        if (!pokemon.getPersistentData().contains(SCALE_STATE_TAG)) {
+            pokemon.getPersistentData().putFloat(SCALE_STATE_TAG, pokemon.getScaleModifier());
+        }
+
         boolean hasGmaxForm = hasGigantamaxForm(pokemon);
         if (config.allowGigantamax && hasGmaxForm) {
             Set<String> newAspects = new HashSet<>(pokemon.getForcedAspects());
             newAspects.add("gmax");
             pokemon.setForcedAspects(newAspects);
-        }
-
-        if (!pokemon.getPersistentData().contains(SCALE_STATE_TAG)) {
-            pokemon.getPersistentData().putFloat(SCALE_STATE_TAG, pokemon.getScaleModifier());
         }
 
         pokemon.setScaleModifier((float) config.dynamaxScale);
@@ -281,5 +281,29 @@ public class DynamaxGimmick {
         pokemon.getPersistentData().remove(TRADEABLE_STATE_TAG);
 
         DynamaxUnleashed.LOGGER.info("[Admin] Force-reverted {} for player {}", pokemon.getSpecies().getName(), player.getName().getString());
+    }
+
+    /**
+     * Admin-only: recover a Pokemon stuck with altered scale/state by normalizing scale
+     * and clearing all Dynamax-related persistent tags.
+     */
+    public static void recoverStuckScale(Pokemon pokemon, ServerPlayerEntity player) {
+        if (pokemon.getForcedAspects().contains("gmax")) {
+            Set<String> newAspects = new HashSet<>(pokemon.getForcedAspects());
+            newAspects.remove("gmax");
+            pokemon.setForcedAspects(newAspects);
+        }
+
+        pokemon.setScaleModifier(1.0f);
+        pokemon.getPersistentData().remove(DYNAMAX_TAG);
+        pokemon.getPersistentData().remove(SCALE_STATE_TAG);
+
+        if (pokemon.getPersistentData().contains(TRADEABLE_STATE_TAG)) {
+            boolean originalTradeable = pokemon.getPersistentData().getBoolean(TRADEABLE_STATE_TAG);
+            pokemon.setTradeable(originalTradeable);
+            pokemon.getPersistentData().remove(TRADEABLE_STATE_TAG);
+        }
+
+        DynamaxUnleashed.LOGGER.info("[Admin] Recovered stuck scale/state for {} (player {})", pokemon.getSpecies().getName(), player.getName().getString());
     }
 }
