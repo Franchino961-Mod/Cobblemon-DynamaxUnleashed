@@ -14,6 +14,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.2.2] - 2026-04-14
+
+### Added
+- **Recovery Command for Stuck Scale** — Added `/dynamax fixscale <player> <slot>` (OP 2) to recover Pokémon stuck with enlarged normal size by clearing Dynamax-related state and normalizing scale.
+
+### Fixed
+- **Gigantamax Scale Snapshot Order** — Fixed a bug where, for some Gmax-capable species, the original scale snapshot could be captured after form/aspect changes. This could cause the normal form to remain enlarged after revert.
+- **Consistent Scale Snapshot in Force Path** — Applied the same corrected ordering to admin force operations (`dynamaxForce()` / `undynamaxForce()`) so scale is captured before Gmax aspect application.
+
+---
+
 ## [1.2.1] - 2026-03-18
 
 ### Fixed
@@ -138,5 +149,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [1.2.0]: https://github.com/Franchino961-Mod/Cobblemon-DynamaxUnleashed/releases/tag/v1.2.0
 [1.2.1]: https://github.com/Franchino961-Mod/Cobblemon-DynamaxUnleashed/releases/tag/v1.2.1
+[1.2.2]: https://github.com/Franchino961-Mod/Cobblemon-DynamaxUnleashed/releases/tag/v1.2.2
 [1.1.0]: https://github.com/Franchino961-Mod/Cobblemon-DynamaxUnleashed/releases/tag/v1.1.0
 [1.0.0]: https://github.com/Franchino961-Mod/Cobblemon-DynamaxUnleashed/releases/tag/v1.0.0

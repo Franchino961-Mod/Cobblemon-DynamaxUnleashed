@@ -14,6 +14,17 @@ e questo progetto aderisce al [Versionamento Semantico](https://semver.org/spec/
 
 ---
 
+## [1.2.2] - 2026-04-14
+
+### Aggiunto
+- **Comando di Recupero Scala Bloccata** — Aggiunto `/dynamax fixscale <giocatore> <slot>` (OP 2) per recuperare Pokémon bloccati con dimensione normale aumentata, ripulendo lo stato legato al Dynamax e normalizzando la scala.
+
+### Corretto
+- **Ordine Salvataggio Scala in Gigantamax** — Corretto un bug per cui, su alcune specie compatibili Gmax, lo snapshot della scala originale poteva essere salvato dopo i cambi forma/aspect. Questo poteva lasciare la forma normale ingrandita dopo il revert.
+- **Ordine Corretto anche nel Percorso Force** — Applicato lo stesso ordine corretto anche alle operazioni admin forzate (`dynamaxForce()` / `undynamaxForce()`), così la scala viene sempre salvata prima dell'applicazione dell'aspect Gmax.
+
+---
+
 ## [1.2.1] - 2026-03-18
 
 ### Corretto
@@ -131,5 +142,6 @@ e questo progetto aderisce al [Versionamento Semantico](https://semver.org/spec/
 
 [1.2.0]: https://github.com/Franchino961-Mod/Cobblemon-DynamaxUnleashed/releases/tag/v1.2.0
 [1.2.1]: https://github.com/Franchino961-Mod/Cobblemon-DynamaxUnleashed/releases/tag/v1.2.1
+[1.2.2]: https://github.com/Franchino961-Mod/Cobblemon-DynamaxUnleashed/releases/tag/v1.2.2
 [1.1.0]: https://github.com/Franchino961-Mod/Cobblemon-DynamaxUnleashed/releases/tag/v1.1.0
 [1.0.0]: https://github.com/Franchino961-Mod/Cobblemon-DynamaxUnleashed/releases/tag/v1.0.0
