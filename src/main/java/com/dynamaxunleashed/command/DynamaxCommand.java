@@ -22,6 +22,7 @@ import net.minecraft.text.Text;
  *
  * /dynamax <player> <slot>       — Force toggle Dynamax, bypassing all requirements (OP lv 2)
  * /dynamax clear <player>        — Clear cooldown for a specific player's active Pokémon (OP lv 2)
+ * /dynamax fixscale <player> <slot> — Reset stuck scale/state on a specific Pokémon (OP lv 2)
  * /dynamax reload                — Reload config from disk (OP lv 4)
  */
 public class DynamaxCommand {
@@ -46,6 +47,16 @@ public class DynamaxCommand {
                     )
                 )
 
+                // /dynamax fixscale <player> <slot> — recover stuck enlarged size/state
+                .then(CommandManager.literal("fixscale")
+                    .requires(source -> source.hasPermissionLevel(2))
+                    .then(CommandManager.argument("player", EntityArgumentType.player())
+                        .then(CommandManager.argument("slot", IntegerArgumentType.integer(1, 6))
+                            .executes(DynamaxCommand::executeFixScale)
+                        )
+                    )
+                )
+
                 // /dynamax reload — reload config from disk (OP level 4)
                 .then(CommandManager.literal("reload")
                     .requires(source -> source.hasPermissionLevel(4))
@@ -53,7 +64,7 @@ public class DynamaxCommand {
                 )
         );
 
-        DynamaxUnleashed.LOGGER.info("Registered /dynamax command (force, clear, reload)");
+        DynamaxUnleashed.LOGGER.info("Registered /dynamax command (force, clear, fixscale, reload)");
     }
 
     /**
@@ -140,6 +151,39 @@ public class DynamaxCommand {
             true
         );
         DynamaxUnleashed.LOGGER.info("Admin {} cleared Dynamax cooldowns for {}", source.getName(), playerName);
+        return 1;
+    }
+
+    /**
+     * Reset a stuck Pokémon scale/state for one slot.
+     * Requires OP level 2.
+     */
+    private static int executeFixScale(CommandContext<ServerCommandSource> context) throws CommandSyntaxException {
+        ServerCommandSource source = context.getSource();
+        ServerPlayerEntity targetPlayer = EntityArgumentType.getPlayer(context, "player");
+        int slot = IntegerArgumentType.getInteger(context, "slot");
+        int slotIndex = slot - 1;
+
+        PlayerPartyStore party = Cobblemon.INSTANCE.getStorage().getParty(targetPlayer);
+        if (party == null) {
+            source.sendError(Text.literal("§cCannot access party for player: " + targetPlayer.getName().getString()));
+            return 0;
+        }
+
+        Pokemon pokemon = party.get(slotIndex);
+        if (pokemon == null) {
+            source.sendError(Text.literal("§cNo Pokémon in slot " + slot + " for player: " + targetPlayer.getName().getString()));
+            return 0;
+        }
+
+        DynamaxGimmick.recoverStuckScale(pokemon, targetPlayer);
+
+        source.sendFeedback(
+            () -> Text.literal("§a[Admin] Recovered scale/state for " +
+                pokemon.getDisplayName(false).getString() +
+                " (slot " + slot + ") of " + targetPlayer.getName().getString()),
+            true
+        );
         return 1;
     }
 
