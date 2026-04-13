@@ -5,7 +5,7 @@ A Cobblemon addon mod that allows Pokémon to Dynamax and Gigantamax outside of 
 [![Download on CurseForge](https://img.shields.io/badge/Download_on-CurseForge-orange?style=for-the-badge&logo=curseforge)](https://www.curseforge.com/minecraft/mc-mods/cobblemon-dynamax-unleashed)
 
 [![Minecraft](https://img.shields.io/badge/Minecraft-1.21.1-green.svg)](https://www.minecraft.net/)
-[![Version](https://img.shields.io/badge/version-1.2.0-blue.svg)]()
+[![Version](https://img.shields.io/badge/version-1.2.2-blue.svg)]()
 [![Fabric](https://img.shields.io/badge/Fabric-0.16.9-blue.svg)](https://fabricmc.net/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
@@ -181,7 +181,7 @@ dynamax-unleashed/
 │   │   ├── DynamaxUnleashed.java           # Main mod entry
 │   │   ├── DynamaxUnleashedClient.java     # Client entry
 │   │   ├── command/
-│   │   │   └── DynamaxCommand.java         # Admin commands (force/clear/reload)
+│   │   │   └── DynamaxCommand.java         # Admin commands (force/clear/fixscale/reload)
 │   │   ├── config/
 │   │   │   └── ModConfig.java              # Configuration + validation
 │   │   ├── cooldown/
@@ -224,6 +224,7 @@ dynamax-unleashed/
 
 - [x] ~~Admin command `/dynamax clear <player>` to reset cooldowns~~ *(added in v1.2.0)*
 - [x] ~~Hot-reload config with `/dynamax reload`~~ *(added in v1.2.0)*
+- [x] ~~Admin command `/dynamax fixscale <player> <slot>` to recover stuck enlarged Pokemon~~ *(added in v1.2.2)*
 - [ ] Visual particles when activating Dynamax
 - [ ] Custom sound effects
 - [ ] ModMenu integration for in-game config GUI
@@ -235,7 +236,9 @@ dynamax-unleashed/
 | Command | Description | Permission |
 |---------|-------------|------------|
 | `/dynamax <player> <slot>` | Force-toggle Dynamax, bypassing all requirements | OP 2 |
-| `/dynamax clear <player>` | Reset Dynamax cooldowns for all Pokémon in party | OP 2 || `/dynamax reload` | Reload config from disk without restart | OP 4 |
+| `/dynamax clear <player>` | Reset Dynamax cooldowns for all Pokémon in party | OP 2 |
+| `/dynamax fixscale <player> <slot>` | Recover a stuck Pokémon scale/state and return it to normal size | OP 2 |
+| `/dynamax reload` | Reload config from disk without restart | OP 4 |
 ## 📄 License
 
 This mod is licensed under the [MIT License](LICENSE). Feel free to include it in your modpacks!

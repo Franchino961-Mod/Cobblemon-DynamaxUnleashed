@@ -5,7 +5,7 @@ Una mod addon per Cobblemon che permette ai Pokémon di usare Dynamax e Gigantam
 [![Download on CurseForge](https://img.shields.io/badge/Download_on-CurseForge-orange?style=for-the-badge&logo=curseforge)](https://www.curseforge.com/minecraft/mc-mods/cobblemon-dynamax-unleashed)
 
 [![Minecraft](https://img.shields.io/badge/Minecraft-1.21.1-green.svg)](https://www.minecraft.net/)
-[![Versione](https://img.shields.io/badge/versione-1.2.0-blue.svg)]()
+[![Versione](https://img.shields.io/badge/versione-1.2.2-blue.svg)]()
 [![Fabric](https://img.shields.io/badge/Fabric-0.16.9-blue.svg)](https://fabricmc.net/)
 [![Licenza](https://img.shields.io/badge/Licenza-MIT-yellow.svg)](../LICENSE)
 
@@ -177,7 +177,7 @@ dynamax-unleashed/
 │   │   ├── DynamaxUnleashed.java           # Entry point principale
 │   │   ├── DynamaxUnleashedClient.java     # Entry point client
 │   │   ├── command/
-│   │   │   └── DynamaxCommand.java         # Comandi admin (force/clear/reload)
+│   │   │   └── DynamaxCommand.java         # Comandi admin (force/clear/fixscale/reload)
 │   │   ├── config/
 │   │   │   └── ModConfig.java              # Configurazione + validazione
 │   │   ├── cooldown/
@@ -229,7 +229,7 @@ cd dynamax-unleashed
 .\gradlew.bat build
 ```
 
-Il file `.jar` compilato sarà in `build/libs/dynamax-unleashed-1.1.0.jar`
+Il file `.jar` compilato sarà in `build/libs/cobblemon-dynamax-unleashed-1.2.2.jar`
 
 ## 📝 Problemi Noti
 
@@ -241,6 +241,7 @@ Il file `.jar` compilato sarà in `build/libs/dynamax-unleashed-1.1.0.jar`
 
 - [x] ~~Comando admin `/dynamax clear <player>` per resettare i cooldown~~ *(aggiunto nella v1.2.0)*
 - [x] ~~Ricarica config con `/dynamax reload`~~ *(aggiunto nella v1.2.0)*
+- [x] ~~Comando admin `/dynamax fixscale <player> <slot>` per recuperare Pokémon bloccati a scala aumentata~~ *(aggiunto nella v1.2.2)*
 - [ ] Particelle visive all'attivazione del Dynamax
 - [ ] Effetti sonori personalizzati
 - [ ] Integrazione ModMenu per GUI di configurazione in-game
@@ -253,6 +254,7 @@ Il file `.jar` compilato sarà in `build/libs/dynamax-unleashed-1.1.0.jar`
 |---------|-------------|----------|
 | `/dynamax <giocatore> <slot>` | Attiva/disattiva il Dynamax forzatamente, bypassando tutti i requisiti | OP 2 |
 | `/dynamax clear <giocatore>` | Azzera i cooldown Dynamax di tutti i Pokémon nella squadra | OP 2 |
+| `/dynamax fixscale <giocatore> <slot>` | Ripristina scala/stato di un Pokémon bloccato e lo riporta alle dimensioni normali | OP 2 |
 | `/dynamax reload` | Ricarica il config da disco senza riavviare | OP 4 |
 
 ## 📄 Licenza
