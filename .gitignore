@@ -61,6 +61,9 @@ pnpm-debug.log*
 .nyc_output/
 coverage/
 
+# Auto-generated upgrade hook telemetry
+.github/java-upgrade/
+
 # Environment / secrets
 .env
 .env.*
