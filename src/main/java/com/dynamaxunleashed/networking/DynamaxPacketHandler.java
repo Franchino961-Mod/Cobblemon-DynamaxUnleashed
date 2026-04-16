@@ -45,7 +45,7 @@ public class DynamaxPacketHandler {
             DynamaxGimmick.dynamaxToggle(pokemon, player);
         } else {
             // Pokemon not found in party - send error message from config
-            player.sendMessage(Text.literal(DynamaxUnleashed.getConfig().messages.pokemonNotFound), false);
+            player.sendMessage(Text.translatable("dynamax_unleashed.message.pokemon_not_found"), false);
             DynamaxUnleashed.LOGGER.warn("Player {} tried to Dynamax non-existent Pokemon UUID: {}", 
                 player.getName().getString(), packet.pokemonId());
         }
