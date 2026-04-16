@@ -13,7 +13,7 @@
   "dynamax_unleashed.message.already_primal": "§cNon puoi usare il Dynamax in forma Primordiale!",
   "dynamax_unleashed.message.already_ultra": "§cNon puoi usare il Dynamax durante l'Ultraesplosione!",
   "dynamax_unleashed.message.no_dynamax_band": "§cHai bisogno di un Polsino Dynamax per usare il Dynamax!",
-  "dynamax_unleashed.message.no_power_spot": "§cDevi essere vicino a un Power Spot per usare il Dynamax!",
+  "dynamax_unleashed.message.no_power_spot": "§cDevi essere vicino a un Power Spot per usare il Dynamax! (Raggio: %s blocchi)",
   "dynamax_unleashed.message.no_gmax_factor": "§cQuesto Pokémon non può Gigamaxarsi! (Manca il Fattore Gigamax)",
   "dynamax_unleashed.message.pokemon_not_found": "§cPokémon non trovato nella tua squadra!",
   "dynamax_unleashed.config.title": "Configurazione Dynamax Unleashed",
