@@ -5,7 +5,7 @@ A Cobblemon addon mod that allows Pokémon to Dynamax and Gigantamax outside of 
 [![Download on CurseForge](https://img.shields.io/badge/Download_on-CurseForge-orange?style=for-the-badge&logo=curseforge)](https://www.curseforge.com/minecraft/mc-mods/cobblemon-dynamax-unleashed)
 
 [![Minecraft](https://img.shields.io/badge/Minecraft-1.21.1-green.svg)](https://www.minecraft.net/)
-[![Version](https://img.shields.io/badge/version-1.2.2-blue.svg)]()
+[![Version](https://img.shields.io/badge/version-1.2.3-blue.svg)]()
 [![Fabric](https://img.shields.io/badge/Fabric-0.16.9-blue.svg)](https://fabricmc.net/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
@@ -29,7 +29,7 @@ This mod extends Cobblemon's Dynamax feature beyond battles, allowing your Poké
 - **📏 Configurable Scale**: Adjust Pokémon size when Dynamaxed (default: 2.0x)
 - **🎨 Gigantamax Support**: All Gigantamax forms with full 3D models
 - **🛡️ Battle Requirements**: Prevents Dynamax during Mega Evolution, Primal, Ultra Burst
-- **🌍 Multilingual**: English and Italian translations included
+- **🌍 Multilingual**: English, Italian, and French translations included
 - **⚙️ Fully Configurable**: Customize every aspect via config file, with auto-validation of values
 - **🔧 Admin Commands**: Full admin control via `/dynamax` subcommands
 
