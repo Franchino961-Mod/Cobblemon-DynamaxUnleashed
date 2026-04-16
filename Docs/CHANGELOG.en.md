@@ -14,6 +14,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.2.3] - 2026-04-16
+
+### Added
+- **French Translation (`fr_fr`)** — Added full French language file for buttons, gameplay messages, and admin command feedback.
+
+### Fixed
+- **Localized Gameplay Messages** — Replaced hardcoded/literal gameplay messages with translatable keys so non-English client languages are properly applied in chat feedback.
+- **Dynamax Button Label Desync** — Fixed interaction wheel label desync where the button could stay on "Revert Dynamax" after reverting; GUI now uses a client-safe visual-state check.
+
+---
+
 ## [1.2.2] - 2026-04-14
 
 ### Added
@@ -150,5 +161,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [1.2.0]: https://github.com/Franchino961-Mod/Cobblemon-DynamaxUnleashed/releases/tag/v1.2.0
 [1.2.1]: https://github.com/Franchino961-Mod/Cobblemon-DynamaxUnleashed/releases/tag/v1.2.1
 [1.2.2]: https://github.com/Franchino961-Mod/Cobblemon-DynamaxUnleashed/releases/tag/v1.2.2
+[1.2.3]: https://github.com/Franchino961-Mod/Cobblemon-DynamaxUnleashed/releases/tag/v1.2.3
 [1.1.0]: https://github.com/Franchino961-Mod/Cobblemon-DynamaxUnleashed/releases/tag/v1.1.0
 [1.0.0]: https://github.com/Franchino961-Mod/Cobblemon-DynamaxUnleashed/releases/tag/v1.0.0
