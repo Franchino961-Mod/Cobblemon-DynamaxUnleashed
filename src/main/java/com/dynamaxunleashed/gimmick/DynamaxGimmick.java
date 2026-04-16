@@ -24,6 +24,7 @@ public class DynamaxGimmick {
     private static final String DYNAMAX_TAG = "is_dynamax";
     private static final String TRADEABLE_STATE_TAG = "pre_dynamax_tradeable";
     private static final String SCALE_STATE_TAG = "pre_dynamax_scale_modifier";
+    private static final float SCALE_EPSILON = 0.001f;
     
     /**
      * Toggle Dynamax state for a Pokémon
@@ -57,15 +58,14 @@ public class DynamaxGimmick {
         
         // MSD-compatible check: Dynamax Band requirement
         if (config.requireDynamaxBand && !DynamaxUtils.hasDynamaxBand(player)) {
-            player.sendMessage(Text.literal(config.messages.noDynamaxBand), false);
+            player.sendMessage(Text.translatable("dynamax_unleashed.message.no_dynamax_band"), false);
             return;
         }
         
         // MSD-compatible check: Power Spot requirement
         if (config.requirePowerSpot && !config.dynamaxAnywhere) {
             if (!DynamaxUtils.isPowerSpotNearby(player, config.powerSpotRange)) {
-                String message = config.messages.noPowerSpot.replace("{range}", String.valueOf(config.powerSpotRange));
-                player.sendMessage(Text.literal(message), false);
+                player.sendMessage(Text.translatable("dynamax_unleashed.message.no_power_spot", config.powerSpotRange), false);
                 return;
             }
         }
@@ -73,14 +73,13 @@ public class DynamaxGimmick {
         // Check cooldown
         if (cooldownManager.isOnCooldown(pokemon.getUuid())) {
             int remaining = cooldownManager.getRemainingSeconds(pokemon.getUuid());
-            String message = config.messages.cooldownActive.replace("{time}", String.valueOf(remaining));
-            player.sendMessage(Text.literal(message), false);
+            player.sendMessage(Text.translatable("dynamax_unleashed.message.cooldown_active", remaining), false);
             return;
         }
         
         // Check if Pokémon can Dynamax
         if (!canDynamax(pokemon)) {
-            player.sendMessage(Text.literal(config.messages.cannotDynamax), false);
+            player.sendMessage(Text.translatable("dynamax_unleashed.message.cannot_dynamax"), false);
             return;
         }
         
@@ -90,7 +89,7 @@ public class DynamaxGimmick {
         
         // MSD-compatible check: GmaxFactor requirement for Gigantamax
         if (canUseGmax && config.requireGmaxFactor && !pokemon.getGmaxFactor()) {
-            player.sendMessage(Text.literal(config.messages.noGmaxFactor), false);
+            player.sendMessage(Text.translatable("dynamax_unleashed.message.no_gmax_factor"), false);
             return;
         }
         
@@ -127,9 +126,10 @@ public class DynamaxGimmick {
         pokemon.setTradeable(false);
         
         // Send success message
-        String message = config.messages.dynamaxActivated
-            .replace("{pokemon}", pokemon.getDisplayName(false).getString());
-        player.sendMessage(Text.literal(message), false);
+        player.sendMessage(Text.translatable(
+            canUseGmax ? "dynamax_unleashed.message.gigantamax_activated" : "dynamax_unleashed.message.dynamax_activated",
+            pokemon.getDisplayName(false)
+        ), false);
         
         DynamaxUnleashed.LOGGER.info(
             "Player {} activated Dynamax on {}",
@@ -178,9 +178,7 @@ public class DynamaxGimmick {
         cooldownManager.startCooldown(pokemon.getUuid());
         
         // Send message
-        String message = config.messages.dynamaxReverted
-            .replace("{pokemon}", pokemon.getDisplayName(false).getString());
-        player.sendMessage(Text.literal(message), false);
+        player.sendMessage(Text.translatable("dynamax_unleashed.message.dynamax_reverted", pokemon.getDisplayName(false)), false);
         
         DynamaxUnleashed.LOGGER.info(
             "Player {} reverted {} from Dynamax",
@@ -194,6 +192,27 @@ public class DynamaxGimmick {
      */
     public static boolean isDynamax(Pokemon pokemon) {
         return pokemon.getPersistentData().getBoolean(DYNAMAX_TAG);
+    }
+
+    /**
+     * Client-oriented check used by GUI state when persistent data has not synced yet.
+     */
+    public static boolean isDynamaxVisualState(Pokemon pokemon) {
+        if (isDynamax(pokemon)) {
+            return true;
+        }
+
+        ModConfig config = DynamaxUnleashed.getConfig();
+        if (config == null) {
+            return false;
+        }
+
+        if (pokemon.getForcedAspects().contains("gmax")) {
+            return true;
+        }
+
+        float targetScale = (float) config.dynamaxScale;
+        return Math.abs(pokemon.getScaleModifier() - targetScale) < SCALE_EPSILON;
     }
     
     /**
