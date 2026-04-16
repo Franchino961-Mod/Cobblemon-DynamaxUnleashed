@@ -14,8 +14,6 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.util.Identifier;
 import org.joml.Vector3f;
 
-import java.util.Objects;
-
 /**
  * Handles adding Dynamax button to Pokemon interaction GUI
  * Uses POKEMON_INTERACTION_GUI_CREATION event like MegaShowdown does
@@ -56,7 +54,7 @@ public class InteractionGUIHandler {
             }
             
             // Check if already Dynamaxed
-            boolean isDynamaxed = DynamaxGimmick.isDynamax(pokemon);
+            boolean isDynamaxed = DynamaxGimmick.isDynamaxVisualState(pokemon);
             
             // Make pokemon final for lambda
             final Pokemon finalPokemon = pokemon;
