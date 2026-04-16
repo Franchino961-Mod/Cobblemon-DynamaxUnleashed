@@ -107,11 +107,13 @@ public class DynamaxCommand {
         boolean isDynamaxed = DynamaxGimmick.isDynamax(pokemon);
 
         if (isDynamaxed != wasDynamaxed) {
-            String action = isDynamaxed ? "Dynamaxed" : "reverted";
             source.sendFeedback(
-                () -> Text.literal("§a[Admin] " + action + " " +
-                    pokemon.getDisplayName(false).getString() +
-                    " (slot " + slot + ") for " + targetPlayer.getName().getString()),
+                () -> Text.translatable(
+                    isDynamaxed ? "dynamax_unleashed.command.force_dynamaxed" : "dynamax_unleashed.command.force_reverted",
+                    pokemon.getDisplayName(false),
+                    slot,
+                    targetPlayer.getName()
+                ),
                 true
             );
             return 1;
@@ -147,7 +149,7 @@ public class DynamaxCommand {
         final int count = cleared;
         final String playerName = targetPlayer.getName().getString();
         source.sendFeedback(
-            () -> Text.literal("§aCleared Dynamax cooldowns for " + count + " Pokémon of " + playerName),
+            () -> Text.translatable("dynamax_unleashed.command.cooldown_cleared", count, playerName),
             true
         );
         DynamaxUnleashed.LOGGER.info("Admin {} cleared Dynamax cooldowns for {}", source.getName(), playerName);
