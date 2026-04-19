@@ -5,7 +5,7 @@ A Cobblemon addon mod that allows Pokémon to Dynamax and Gigantamax outside of 
 [![Download on CurseForge](https://img.shields.io/badge/Download_on-CurseForge-orange?style=for-the-badge&logo=curseforge)](https://www.curseforge.com/minecraft/mc-mods/cobblemon-dynamax-unleashed)
 
 [![Minecraft](https://img.shields.io/badge/Minecraft-1.21.1-green.svg)](https://www.minecraft.net/)
-[![Version](https://img.shields.io/badge/version-1.2.3-blue.svg)]()
+[![Version](https://img.shields.io/badge/version-1.2.4-blue.svg)]()
 [![Fabric](https://img.shields.io/badge/Fabric-0.16.9-blue.svg)](https://fabricmc.net/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
