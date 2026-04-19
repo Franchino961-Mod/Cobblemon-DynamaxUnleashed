@@ -24,7 +24,9 @@ public class DynamaxGimmick {
     private static final String DYNAMAX_TAG = "is_dynamax";
     private static final String TRADEABLE_STATE_TAG = "pre_dynamax_tradeable";
     private static final String SCALE_STATE_TAG = "pre_dynamax_scale_modifier";
+    private static final String REACTIVATION_LOCK_UNTIL_TAG = "dynamax_reactivation_lock_until";
     private static final float SCALE_EPSILON = 0.001f;
+    private static final long REACTIVATION_LOCK_MS = 1500L;
     
     /**
      * Toggle Dynamax state for a Pokémon
@@ -55,6 +57,12 @@ public class DynamaxGimmick {
     private static void dynamax(Pokemon pokemon, ServerPlayerEntity player) {
         ModConfig config = DynamaxUnleashed.getConfig();
         CooldownManager cooldownManager = DynamaxUnleashed.getCooldownManager();
+
+        // Prevent reactivation while shrink/revert transition is still settling.
+        if (isReactivationLocked(pokemon)) {
+            player.sendMessage(Text.literal("§cYour Pokémon is still stabilizing after reverting. Try again in a moment."), false);
+            return;
+        }
         
         // MSD-compatible check: Dynamax Band requirement
         if (config.requireDynamaxBand && !DynamaxUtils.hasDynamaxBand(player)) {
@@ -168,6 +176,9 @@ public class DynamaxGimmick {
         // Remove Dynamax tag
         pokemon.getPersistentData().remove(DYNAMAX_TAG);
         pokemon.getPersistentData().remove(SCALE_STATE_TAG);
+
+        // Block immediate reactivation to avoid scale race conditions during shrink transitions.
+        setReactivationLock(pokemon);
         
         // Restore original tradeable state (saved before dynamax activation)
         boolean originalTradeable = pokemon.getPersistentData().getBoolean(TRADEABLE_STATE_TAG);
@@ -248,6 +259,11 @@ public class DynamaxGimmick {
     public static void dynamaxForce(Pokemon pokemon, ServerPlayerEntity player) {
         ModConfig config = DynamaxUnleashed.getConfig();
 
+        if (isReactivationLocked(pokemon)) {
+            player.sendMessage(Text.literal("§cYour Pokémon is still stabilizing after reverting. Try again in a moment."), false);
+            return;
+        }
+
         if (!pokemon.getPersistentData().contains(SCALE_STATE_TAG)) {
             pokemon.getPersistentData().putFloat(SCALE_STATE_TAG, pokemon.getScaleModifier());
         }
@@ -295,6 +311,8 @@ public class DynamaxGimmick {
         pokemon.getPersistentData().remove(DYNAMAX_TAG);
         pokemon.getPersistentData().remove(SCALE_STATE_TAG);
 
+        setReactivationLock(pokemon);
+
         boolean originalTradeable = pokemon.getPersistentData().getBoolean(TRADEABLE_STATE_TAG);
         pokemon.setTradeable(originalTradeable);
         pokemon.getPersistentData().remove(TRADEABLE_STATE_TAG);
@@ -316,6 +334,7 @@ public class DynamaxGimmick {
         pokemon.setScaleModifier(1.0f);
         pokemon.getPersistentData().remove(DYNAMAX_TAG);
         pokemon.getPersistentData().remove(SCALE_STATE_TAG);
+        setReactivationLock(pokemon);
 
         if (pokemon.getPersistentData().contains(TRADEABLE_STATE_TAG)) {
             boolean originalTradeable = pokemon.getPersistentData().getBoolean(TRADEABLE_STATE_TAG);
@@ -324,5 +343,24 @@ public class DynamaxGimmick {
         }
 
         DynamaxUnleashed.LOGGER.info("[Admin] Recovered stuck scale/state for {} (player {})", pokemon.getSpecies().getName(), player.getName().getString());
+    }
+
+    private static boolean isReactivationLocked(Pokemon pokemon) {
+        if (!pokemon.getPersistentData().contains(REACTIVATION_LOCK_UNTIL_TAG)) {
+            return false;
+        }
+
+        long lockUntil = pokemon.getPersistentData().getLong(REACTIVATION_LOCK_UNTIL_TAG);
+        long now = System.currentTimeMillis();
+        if (now >= lockUntil) {
+            pokemon.getPersistentData().remove(REACTIVATION_LOCK_UNTIL_TAG);
+            return false;
+        }
+        return true;
+    }
+
+    private static void setReactivationLock(Pokemon pokemon) {
+        long lockUntil = System.currentTimeMillis() + REACTIVATION_LOCK_MS;
+        pokemon.getPersistentData().putLong(REACTIVATION_LOCK_UNTIL_TAG, lockUntil);
     }
 }
