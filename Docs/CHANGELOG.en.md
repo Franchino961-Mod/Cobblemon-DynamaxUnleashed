@@ -14,6 +14,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.2.4] - 2026-04-19
+
+### Fixed
+- **Rapid Re-Dynamax Shrink Race** — Fixed a timing issue where re-triggering Dynamax too quickly while the post-revert/post-battle shrink transition was still running could capture an unstable scale and cause incorrect size on later reverts.
+- **Reactivation Stabilization Guard** — Added a short server-side reactivation lock after revert/recovery paths to prevent immediate re-Dynamax during transition states.
+
+---
+
 ## [1.2.3] - 2026-04-16
 
 ### Added
@@ -162,5 +170,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [1.2.1]: https://github.com/Franchino961-Mod/Cobblemon-DynamaxUnleashed/releases/tag/v1.2.1
 [1.2.2]: https://github.com/Franchino961-Mod/Cobblemon-DynamaxUnleashed/releases/tag/v1.2.2
 [1.2.3]: https://github.com/Franchino961-Mod/Cobblemon-DynamaxUnleashed/releases/tag/v1.2.3
+[1.2.4]: https://github.com/Franchino961-Mod/Cobblemon-DynamaxUnleashed/releases/tag/v1.2.4
 [1.1.0]: https://github.com/Franchino961-Mod/Cobblemon-DynamaxUnleashed/releases/tag/v1.1.0
 [1.0.0]: https://github.com/Franchino961-Mod/Cobblemon-DynamaxUnleashed/releases/tag/v1.0.0
