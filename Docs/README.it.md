@@ -5,7 +5,7 @@ Una mod addon per Cobblemon che permette ai Pokémon di usare Dynamax e Gigantam
 [![Download on CurseForge](https://img.shields.io/badge/Download_on-CurseForge-orange?style=for-the-badge&logo=curseforge)](https://www.curseforge.com/minecraft/mc-mods/cobblemon-dynamax-unleashed)
 
 [![Minecraft](https://img.shields.io/badge/Minecraft-1.21.1-green.svg)](https://www.minecraft.net/)
-[![Versione](https://img.shields.io/badge/versione-1.2.3-blue.svg)]()
+[![Versione](https://img.shields.io/badge/versione-1.2.4-blue.svg)]()
 [![Fabric](https://img.shields.io/badge/Fabric-0.16.9-blue.svg)](https://fabricmc.net/)
 [![Licenza](https://img.shields.io/badge/Licenza-MIT-yellow.svg)](../LICENSE)
 
@@ -229,7 +229,7 @@ cd dynamax-unleashed
 .\gradlew.bat build
 ```
 
-Il file `.jar` compilato sarà in `build/libs/cobblemon-dynamax-unleashed-1.2.3.jar`
+Il file `.jar` compilato sarà in `build/libs/cobblemon-dynamax-unleashed-1.2.4.jar`
 
 ## 📝 Problemi Noti
 
