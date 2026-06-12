@@ -1,0 +1,49 @@
+{
+  "dynamax_unleashed.name": "Dynamax Unleashed",
+  "dynamax_unleashed.description": "Позволяет покемонам использовать Динамакс и Гигантамакс вне боя",
+  
+  "dynamax_unleashed.button.dynamax": "Динамакс",
+  "dynamax_unleashed.button.gigantamax": "Гигантамакс",
+  "dynamax_unleashed.button.revert": "Отменить Динамакс",
+  
+  "dynamax_unleashed.message.cooldown_active": "§cВаш покемон слишком устал для Динамакса! Подождите %s секунд.",
+  "dynamax_unleashed.message.cannot_dynamax": "§cЭтот покемон не может использовать Динамакс!",
+  "dynamax_unleashed.message.dynamax_activated": "§b%s использовал Динамакс!",
+  "dynamax_unleashed.message.gigantamax_activated": "§d%s использовал Гигантамакс!",
+  "dynamax_unleashed.message.dynamax_reverted": "§e%s вернулся к обычному размеру.",
+  
+  "dynamax_unleashed.message.already_mega": "§cНевозможно использовать Динамакс во время Мега-эволюции!",
+  "dynamax_unleashed.message.already_primal": "§cНевозможно использовать Динамакс в Первобытной форме!",
+  "dynamax_unleashed.message.already_ultra": "§cНевозможно использовать Динамакс во время Ультра-взрыва!",
+  
+  "dynamax_unleashed.message.no_dynamax_band": "§cВам нужен Браслет Динамакса для использования Динамакса!",
+  "dynamax_unleashed.message.no_power_spot": "§cВы должны быть рядом с Источником Энергии для Динамакса! (Радиус: %s блоков)",
+  "dynamax_unleashed.message.no_gmax_factor": "§cЭтот покемон не может использовать Гигантамакс! (Отсутствует Гига-фактор)",
+  "dynamax_unleashed.message.no_standard_dynamax": "§cОбычный Динамакс отключен! Развешен только Гигантамакс.",
+  "dynamax_unleashed.message.pokemon_not_found": "§cПокемон не найден в вашей группе!",
+  
+  "dynamax_unleashed.config.title": "Настройка Dynamax Unleashed",
+  "dynamax_unleashed.config.enabled": "Включить Динамакс в обычном мире",
+  "dynamax_unleashed.config.cooldown": "Время перезарядки (секунды)",
+  "dynamax_unleashed.config.scale": "Множитель размера Динамакса",
+  "dynamax_unleashed.config.require_band": "Требовать Браслет Динамакса",
+  "dynamax_unleashed.config.allow_gigantamax": "Разрешить формы Гигантамакса",
+  "dynamax_unleashed.config.allow_standard_dynamax": "Разрешить обычный Динамакс",
+  "dynamax_unleashed.config.maintain_requirements": "Сохранять боевые требования",
+  "dynamax_unleashed.config.require_dynamax_band": "Требовать Браслет Динамакса (MSD)",
+  "dynamax_unleashed.config.require_power_spot": "Требовать Источник Энергии (MSD)",
+  "dynamax_unleashed.config.power_spot_range": "Радиус Источника Энергии (блоки)",
+  "dynamax_unleashed.config.dynamax_anywhere": "Динамакс везде (игнорировать Источник Энергии)",
+  "dynamax_unleashed.config.require_gmax_factor": "Требовать Гига-фактор для Гигантамакса",
+  
+  "dynamax_unleashed.tooltip.cooldown_remaining": "§7Динамакс доступен через: §c%s секунд",
+  "dynamax_unleashed.tooltip.ready": "§aГотов к Динамаксу!",
+  
+  "dynamax_unleashed.command.clear_cooldown": "Перезарядка Динамакса сброшена для %s",
+  "dynamax_unleashed.command.clear_all": "Все перезарядки Динамакса сброшены (%s всего)",
+  "dynamax_unleashed.command.reload_success": "§aКонфигурация Dynamax Unleashed успешно перезагружена!",
+  "dynamax_unleashed.command.reload_fail": "§cНе удалось перезагрузить конфигурацию: %s",
+  "dynamax_unleashed.command.force_dynamaxed": "§a[Admin] Принудительно применен Динамакс к %s (слот %d) для %s",
+  "dynamax_unleashed.command.force_reverted": "§a[Admin] Отменен Динамакс для %s (слот %d) для %s",
+  "dynamax_unleashed.command.cooldown_cleared": "§aПерезарядка Динамакса сброшена для %d покемонов игрока %s"
+}
