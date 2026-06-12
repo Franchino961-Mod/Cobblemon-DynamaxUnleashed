@@ -19,6 +19,7 @@
   "dynamax_unleashed.message.no_dynamax_band": "§cYou need a Dynamax Band to use Dynamax!",
   "dynamax_unleashed.message.no_power_spot": "§cYou must be near a Power Spot to Dynamax! (Range: %s blocks)",
   "dynamax_unleashed.message.no_gmax_factor": "§cThis Pokémon cannot Gigantamax! (Missing G-Max Factor)",
+  "dynamax_unleashed.message.no_standard_dynamax": "§cStandard Dynamax is disabled! Only Gigantamax is allowed.",
   "dynamax_unleashed.message.pokemon_not_found": "§cPokémon not found in your party!",
   
   "dynamax_unleashed.config.title": "Dynamax Unleashed Config",
@@ -27,6 +28,7 @@
   "dynamax_unleashed.config.scale": "Dynamax Scale Multiplier",
   "dynamax_unleashed.config.require_band": "Require Dynamax Band",
   "dynamax_unleashed.config.allow_gigantamax": "Allow Gigantamax Forms",
+  "dynamax_unleashed.config.allow_standard_dynamax": "Allow Standard Dynamax",
   "dynamax_unleashed.config.maintain_requirements": "Maintain Battle Requirements",
   "dynamax_unleashed.config.require_dynamax_band": "Require Dynamax Band (MSD)",
   "dynamax_unleashed.config.require_power_spot": "Require Power Spot (MSD)",
