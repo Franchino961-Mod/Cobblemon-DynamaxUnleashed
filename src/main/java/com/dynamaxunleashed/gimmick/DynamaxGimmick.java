@@ -159,7 +159,6 @@ public class DynamaxGimmick {
      * @param player The player owning the Pokémon
      */
     private static void undynamax(Pokemon pokemon, ServerPlayerEntity player) {
-        ModConfig config = DynamaxUnleashed.getConfig();
         CooldownManager cooldownManager = DynamaxUnleashed.getCooldownManager();
         
         // Remove "gmax" from forcedAspects if present (check forcedAspects, not all aspects)
