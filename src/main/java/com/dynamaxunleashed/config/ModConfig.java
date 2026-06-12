@@ -20,6 +20,7 @@ public class ModConfig {
     public double dynamaxScale = 2.0;
     public boolean showCooldownMessage = true;
     public boolean allowGigantamax = true;
+    public boolean allowStandardDynamax = false;
     public boolean maintainBattleRequirements = true;
     
     // MSD-compatible requirements (v1.1.0+)
@@ -39,6 +40,7 @@ public class ModConfig {
         public String noDynamaxBand = "§cYou need a Dynamax Band to use Dynamax! (Equip it in Accessories slots)";
         public String noPowerSpot = "§cYou must be near a Power Spot to Dynamax! (Range: {range} blocks)";
         public String noGmaxFactor = "§cThis Pokémon cannot Gigantamax! (Missing G-Max Factor)";
+        public String noStandardDynamax = "§cStandard Dynamax is disabled! Only Gigantamax is allowed.";
         public String pokemonNotFound = "§cPokémon not found in your party!";
     }
     
