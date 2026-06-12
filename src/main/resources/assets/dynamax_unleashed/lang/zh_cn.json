@@ -1,0 +1,49 @@
+{
+  "dynamax_unleashed.name": "Dynamax Unleashed",
+  "dynamax_unleashed.description": "允许神奇宝贝在战斗外进行极巨化和超极巨化",
+  
+  "dynamax_unleashed.button.dynamax": "极巨化",
+  "dynamax_unleashed.button.gigantamax": "超极巨化",
+  "dynamax_unleashed.button.revert": "取消极巨化",
+  
+  "dynamax_unleashed.message.cooldown_active": "§c你的神奇宝贝太累了，无法进行极巨化！请等待 %s 秒。",
+  "dynamax_unleashed.message.cannot_dynamax": "§c这只神奇宝贝无法进行极巨化！",
+  "dynamax_unleashed.message.dynamax_activated": "§b%s 已极巨化！",
+  "dynamax_unleashed.message.gigantamax_activated": "§d%s 已超极巨化！",
+  "dynamax_unleashed.message.dynamax_reverted": "§e%s 恢复了正常大小。",
+  
+  "dynamax_unleashed.message.already_mega": "§c超级进化状态下无法进行极巨化！",
+  "dynamax_unleashed.message.already_primal": "§c原始回归状态下无法进行极巨化！",
+  "dynamax_unleashed.message.already_ultra": "§c究极爆发状态下无法进行极巨化！",
+  
+  "dynamax_unleashed.message.no_dynamax_band": "§c你需要极巨腕带来使用极巨化！",
+  "dynamax_unleashed.message.no_power_spot": "§c你必须在能量源附近才能进行极巨化！（范围：%s 格）",
+  "dynamax_unleashed.message.no_gmax_factor": "§c这只神奇宝贝无法进行超极巨化！（缺少超极巨因子）",
+  "dynamax_unleashed.message.no_standard_dynamax": "§c普通极巨化已被禁用！只允许进行超极巨化。",
+  "dynamax_unleashed.message.pokemon_not_found": "§c在你的队伍中未找到该神奇宝贝！",
+  
+  "dynamax_unleashed.config.title": "Dynamax Unleashed 配置",
+  "dynamax_unleashed.config.enabled": "开启主世界极巨化",
+  "dynamax_unleashed.config.cooldown": "冷却时间（秒）",
+  "dynamax_unleashed.config.scale": "极巨化体型倍率",
+  "dynamax_unleashed.config.require_band": "需要极巨腕带",
+  "dynamax_unleashed.config.allow_gigantamax": "允许超极巨化形态",
+  "dynamax_unleashed.config.allow_standard_dynamax": "允许普通极巨化",
+  "dynamax_unleashed.config.maintain_requirements": "维持战斗要求",
+  "dynamax_unleashed.config.require_dynamax_band": "需要极巨腕带 (MSD)",
+  "dynamax_unleashed.config.require_power_spot": "需要能量源 (MSD)",
+  "dynamax_unleashed.config.power_spot_range": "能量源范围（格）",
+  "dynamax_unleashed.config.dynamax_anywhere": "任意地点极巨化（绕过能量源）",
+  "dynamax_unleashed.config.require_gmax_factor": "超极巨化需要超极巨因子",
+  
+  "dynamax_unleashed.tooltip.cooldown_remaining": "§7极巨化冷却时间：§c%s 秒",
+  "dynamax_unleashed.tooltip.ready": "§a可以极巨化！",
+  
+  "dynamax_unleashed.command.clear_cooldown": "已清除 %s 的极巨化冷却时间",
+  "dynamax_unleashed.command.clear_all": "已清除所有极巨化冷却时间（共 %s 个）",
+  "dynamax_unleashed.command.reload_success": "§aDynamax Unleashed 配置重新加载成功！",
+  "dynamax_unleashed.command.reload_fail": "§c配置重新加载失败：%s",
+  "dynamax_unleashed.command.force_dynamaxed": "§a[管理员] 已为 %s 的槽位 %d 的 %s 强行开启极巨化",
+  "dynamax_unleashed.command.force_reverted": "§a[管理员] 已为 %s 的槽位 %d 的 %s 取消极巨化",
+  "dynamax_unleashed.command.cooldown_cleared": "§a已清除 %s 的 %d 只神奇宝贝的极巨化冷却时间"
+}
