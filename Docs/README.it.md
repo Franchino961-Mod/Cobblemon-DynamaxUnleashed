@@ -2,10 +2,10 @@
 
 Una mod addon per Cobblemon che permette ai Pokémon di usare Dynamax e Gigantamax fuori dalla battaglia con un sistema di cooldown configurabile!
 
-[![Download on CurseForge](https://img.shields.io/badge/Download_on-CurseForge-orange?style=for-the-badge&logo=curseforge)](https://www.curseforge.com/minecraft/mc-mods/cobblemon-dynamax-unleashed)
+[![Scarica su CurseForge](https://img.shields.io/badge/Scarica_su-CurseForge-orange?style=for-the-badge&logo=curseforge)](https://www.curseforge.com/minecraft/mc-mods/cobblemon-dynamax-unleashed)
 
 [![Minecraft](https://img.shields.io/badge/Minecraft-1.21.1-green.svg)](https://www.minecraft.net/)
-[![Versione](https://img.shields.io/badge/versione-1.2.4-blue.svg)]()
+[![Versione](https://img.shields.io/badge/versione-1.2.5-blue.svg)]()
 [![Fabric](https://img.shields.io/badge/Fabric-0.16.9-blue.svg)](https://fabricmc.net/)
 [![Licenza](https://img.shields.io/badge/Licenza-MIT-yellow.svg)](../LICENSE)
 
@@ -14,11 +14,20 @@ Una mod addon per Cobblemon che permette ai Pokémon di usare Dynamax e Gigantam
 
 > 📝 **Changelog**: Vedi [CHANGELOG.it.md](CHANGELOG.it.md) per la cronologia delle versioni.
 
-## 📋 Descrizione
+## 📖 Panoramica
 
 Questa mod estende la funzionalità Dynamax di Cobblemon oltre le battaglie, permettendo ai tuoi Pokémon di trasformarsi nelle loro forme giganti Dynamax o Gigantamax nell'overworld. Perfetta per mostrare i tuoi Pokémon preferiti o semplicemente per divertirsi con le loro forme massicce!
 
-## ✨ Funzionalità
+---
+
+## 🌟 Perché usare Cobblemon - Dynamax Unleashed?
+- **Dimensioni Immersive dei Pokémon**: Guarda i tuoi Pokémon in forma gigante camminare nell'overworld.
+- **Meccaniche Bilanciate**: Il sistema di cooldown previene l'abuso della forma gigante e mantiene il bilanciamento sul server.
+- **Integrazione MSD**: Supporta i requisiti di Mega Showdown, richiedendo la Dynamax Band e la vicinanza ai Power Spot.
+
+---
+
+## ✨ Funzionalità Principali
 
 - **🔴 Dynamax nell'Overworld**: Usa il Dynamax ovunque, non solo in battaglia
 - **⭐ Integrazione Mega Showdown**: Compatibilità totale con i requisiti MSD (v1.1.0)
@@ -53,6 +62,12 @@ Questa mod estende la funzionalità Dynamax di Cobblemon oltre le battaglie, per
 4. Avvia il gioco!
 
 > 💡 **Nota**: Mega Showdown deve essere installato affinché le forme Gigantamax vengano visualizzate correttamente con modelli 3D personalizzati. La mod non si caricherà senza.
+
+---
+
+## 🖥️ Comportamento Client/Server
+- **Server**: Richiesto. Gestisce la logica delle dimensioni, i cooldown e la validazione dei pacchetti di rete.
+- **Client**: Richiesto. Gestisce il rendering dei modelli 3D personalizzati e l'integrazione con la ruota di interazione.
 
 ## 🎮 Come Usare
 
@@ -231,7 +246,7 @@ cd dynamax-unleashed
 
 Il file `.jar` compilato sarà in `build/libs/cobblemon-dynamax-unleashed-1.2.4.jar`
 
-## 📝 Problemi Noti
+## ⚠️ Limitazioni Note
 
 - Persistenza del cooldown tra riavvii del server non ancora implementata
 - Nessun effetto visivo o particelle quando si attiva il Dynamax
@@ -271,7 +286,7 @@ Contributi, issue e richieste di funzionalità sono benvenuti!
 - Apri una [Issue](../../issues) per segnalare bug o suggerire funzionalità
 - Apri una [Pull Request](../../pulls) per contribuire al codice
 
-## 💬 Supporto
+## 💬 Supporto e Feedback
 
 Se riscontri problemi o bug, segnalali includendo:
 - Versione della mod
