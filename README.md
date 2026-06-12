@@ -5,7 +5,7 @@ A Cobblemon addon mod that allows Pokémon to Dynamax and Gigantamax outside of 
 [![Download on CurseForge](https://img.shields.io/badge/Download_on-CurseForge-orange?style=for-the-badge&logo=curseforge)](https://www.curseforge.com/minecraft/mc-mods/cobblemon-dynamax-unleashed)
 
 [![Minecraft](https://img.shields.io/badge/Minecraft-1.21.1-green.svg)](https://www.minecraft.net/)
-[![Version](https://img.shields.io/badge/version-1.2.4-blue.svg)]()
+[![Version](https://img.shields.io/badge/version-1.2.5-blue.svg)]()
 [![Fabric](https://img.shields.io/badge/Fabric-0.16.9-blue.svg)](https://fabricmc.net/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
@@ -14,11 +14,20 @@ A Cobblemon addon mod that allows Pokémon to Dynamax and Gigantamax outside of 
 
 > 📝 **Changelog**: See [CHANGELOG.en.md](Docs/CHANGELOG.en.md) for version history.
 
-## 📋 Description
+## 📖 Overview
 
 This mod extends Cobblemon's Dynamax feature beyond battles, allowing your Pokémon to transform into their giant Dynamax or Gigantamax forms in the overworld. Perfect for showcasing your favorite Pokémon or just having fun with their massive forms!
 
-## ✨ Features
+---
+
+## 🌟 Why Use Cobblemon - Dynamax Unleashed?
+- **Immersive Pokémon Size**: Experience giant Pokémon roaming in the overworld, showcasing their massive scales.
+- **Balanced Mechanics**: Cooldowns prevent continuous spamming and keep survival/multiplayer server economies healthy.
+- **MSD Integration**: Ready for CobblemonMegaShowdown setups, respecting Dynamax Bands and Power Spot requirements.
+
+---
+
+## ✨ Main Features
 
 - **🔴 Overworld Dynamax**: Use Dynamax anywhere, not just in battle
 - **⭐ Mega Showdown Integration**: Full compatibility with MSD requirements
@@ -53,6 +62,12 @@ This mod extends Cobblemon's Dynamax feature beyond battles, allowing your Poké
 4. Launch the game!
 
 > 💡 **Note**: Mega Showdown must be installed for Gigantamax forms to display correctly with custom 3D models. The mod will not load without it.
+
+---
+
+## 🖥️ Client/Server Behavior
+- **Server**: Required. Handles scale logic, cooldown timers, and network validation.
+- **Client**: Required. Handles custom model rendering and interaction wheel integration.
 
 ## 🎮 How to Use
 
@@ -214,7 +229,7 @@ dynamax-unleashed/
     └── dynamax-unleashed.json              # Default config
 ```
 
-## 📝 Known Issues
+## ⚠️ Known Limitations
 
 - Cooldown persistence between server restarts not yet implemented
 - No visual effects or particles when activating Dynamax
@@ -253,7 +268,7 @@ Contributions, issues, and feature requests are welcome!
 - Open an [Issue](../../issues) to report bugs or suggest features
 - Open a [Pull Request](../../pulls) to contribute code
 
-## 💬 Support
+## 💬 Support & Feedback
 
 If you encounter issues or bugs, please report them with:
 - Mod version
