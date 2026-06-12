@@ -100,6 +100,13 @@ public class DynamaxGimmick {
             player.sendMessage(Text.translatable("dynamax_unleashed.message.no_gmax_factor"), false);
             return;
         }
+
+        // Check if standard Dynamax is disabled
+        boolean isGmaxEligible = canUseGmax && (!config.requireGmaxFactor || pokemon.getGmaxFactor());
+        if (!config.allowStandardDynamax && !isGmaxEligible) {
+            player.sendMessage(Text.translatable("dynamax_unleashed.message.no_standard_dynamax"), false);
+            return;
+        }
         
         // Save original scale before applying Dynamax scale, so size variations can be restored.
         if (!pokemon.getPersistentData().contains(SCALE_STATE_TAG)) {
