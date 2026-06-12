@@ -1,0 +1,49 @@
+{
+  "dynamax_unleashed.name": "Dynamax Unleashed",
+  "dynamax_unleashed.description": "Permite que os Pokémon usem Dynamax e Gigamax fora de batalha",
+  
+  "dynamax_unleashed.button.dynamax": "Dynamax",
+  "dynamax_unleashed.button.gigantamax": "Gigamax",
+  "dynamax_unleashed.button.revert": "Reverter Dynamax",
+  
+  "dynamax_unleashed.message.cooldown_active": "§cSeu Pokémon está muito cansado para usar o Dynamax! Aguarde %s segundos.",
+  "dynamax_unleashed.message.cannot_dynamax": "§cEste Pokémon não pode usar o Dynamax!",
+  "dynamax_unleashed.message.dynamax_activated": "§b%s ativou o Dynamax!",
+  "dynamax_unleashed.message.gigantamax_activated": "§d%s ativou o Gigamax!",
+  "dynamax_unleashed.message.dynamax_reverted": "§e%s retornou ao tamanho normal.",
+  
+  "dynamax_unleashed.message.already_mega": "§cNão é possível usar Dynamax enquanto estiver Megaevoluído!",
+  "dynamax_unleashed.message.already_primal": "§cNão é possível usar Dynamax em forma Primitiva!",
+  "dynamax_unleashed.message.already_ultra": "§cNão é possível usar Dynamax durante o Ultra Explosão!",
+  
+  "dynamax_unleashed.message.no_dynamax_band": "§cVocê precisa de uma Pulseira Dynamax para usar o Dynamax!",
+  "dynamax_unleashed.message.no_power_spot": "§cVocê deve estar perto de um Ponto de Energia para o Dynamax! (Alcance: %s blocos)",
+  "dynamax_unleashed.message.no_gmax_factor": "§cEste Pokémon não pode usar o Gigamax! (Faltando o Fator Gigamax)",
+  "dynamax_unleashed.message.no_standard_dynamax": "§cO Dynamax padrão está desativado! Apenas o Gigamax é permitido.",
+  "dynamax_unleashed.message.pokemon_not_found": "§cPokémon não encontrado no seu grupo!",
+  
+  "dynamax_unleashed.config.title": "Configuração do Dynamax Unleashed",
+  "dynamax_unleashed.config.enabled": "Habilitar Dynamax no Overworld",
+  "dynamax_unleashed.config.cooldown": "Tempo de recarga (segundos)",
+  "dynamax_unleashed.config.scale": "Multiplicador de Escala Dynamax",
+  "dynamax_unleashed.config.require_band": "Exigir Pulseira Dynamax",
+  "dynamax_unleashed.config.allow_gigantamax": "Permitir Formas Gigamax",
+  "dynamax_unleashed.config.allow_standard_dynamax": "Permitir Dynamax Padrão",
+  "dynamax_unleashed.config.maintain_requirements": "Manter Requisitos de Batalha",
+  "dynamax_unleashed.config.require_dynamax_band": "Exigir Pulseira Dynamax (MSD)",
+  "dynamax_unleashed.config.require_power_spot": "Exigir Ponto de Energia (MSD)",
+  "dynamax_unleashed.config.power_spot_range": "Alcance do Ponto de Energia (blocos)",
+  "dynamax_unleashed.config.dynamax_anywhere": "Dynamax em qualquer lugar (ignorar Ponto de Energia)",
+  "dynamax_unleashed.config.require_gmax_factor": "Exigir Fator Gigamax para Gigamax",
+  
+  "dynamax_unleashed.tooltip.cooldown_remaining": "§7Dynamax disponível em: §c%s segundos",
+  "dynamax_unleashed.tooltip.ready": "§aPronto para o Dynamax!",
+  
+  "dynamax_unleashed.command.clear_cooldown": "Tempo de recarga do Dynamax limpo para %s",
+  "dynamax_unleashed.command.clear_all": "Todos os tempos de recarga do Dynamax limpos (%s no total)",
+  "dynamax_unleashed.command.reload_success": "§aConfiguração do Dynamax Unleashed recarregada com sucesso!",
+  "dynamax_unleashed.command.reload_fail": "§cFalha ao recarregar a configuração: %s",
+  "dynamax_unleashed.command.force_dynamaxed": "§a[Admin] Dynamax forçado em %s (slot %d) de %s",
+  "dynamax_unleashed.command.force_reverted": "§a[Admin] Revertido %s (slot %d) de %s",
+  "dynamax_unleashed.command.cooldown_cleared": "§aTempos de recarga do Dynamax limpos para %d Pokémon de %s"
+}
