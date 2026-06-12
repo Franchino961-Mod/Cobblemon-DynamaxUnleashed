@@ -14,6 +14,14 @@ e questo progetto aderisce al [Versionamento Semantico](https://semver.org/spec/
 
 ---
 
+## [1.2.5] - 2026-06-12
+
+### Aggiunto
+- **Configurazione Attivazione Dynamax Standard (`allowStandardDynamax`)** — Aggiunta un'opzione di configurazione (valore predefinito `false`) per disabilitare il Dynamax standard fuori dalla lotta, limitando la trasformazione ai soli Pokémon che sono idonei per il Gigamax.
+- **Nuove Chiavi di Traduzione** — Aggiunte le traduzioni per le opzioni `no_standard_dynamax` e `allow_standard_dynamax` per le lingue inglese, italiano, tedesco, spagnolo, francese, portoghese, russo e cinese.
+
+---
+
 ## [1.2.4] - 2026-04-19
 
 ### Corretto
@@ -164,5 +172,6 @@ e questo progetto aderisce al [Versionamento Semantico](https://semver.org/spec/
 [1.2.2]: https://github.com/Franchino961-Mod/Cobblemon-DynamaxUnleashed/releases/tag/v1.2.2
 [1.2.3]: https://github.com/Franchino961-Mod/Cobblemon-DynamaxUnleashed/releases/tag/v1.2.3
 [1.2.4]: https://github.com/Franchino961-Mod/Cobblemon-DynamaxUnleashed/releases/tag/v1.2.4
+[1.2.5]: https://github.com/Franchino961-Mod/Cobblemon-DynamaxUnleashed/releases/tag/v1.2.5
 [1.1.0]: https://github.com/Franchino961-Mod/Cobblemon-DynamaxUnleashed/releases/tag/v1.1.0
 [1.0.0]: https://github.com/Franchino961-Mod/Cobblemon-DynamaxUnleashed/releases/tag/v1.0.0
