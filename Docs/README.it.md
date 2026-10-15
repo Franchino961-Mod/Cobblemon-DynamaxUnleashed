@@ -312,11 +312,6 @@ Se riscontri problemi o bug, segnalali includendo:
 - [CobblemonMegaShowdown](https://www.curseforge.com/minecraft/mc-mods/cobblemon-megashowdown) — Mod richiesta
 - [Architectury API](https://www.curseforge.com/minecraft/mc-mods/architectury-api)
 - [Fabric](https://fabricmc.net/)
-
-## 📝 Changelog
-
-Vedi [CHANGELOG.it.md](CHANGELOG.it.md) per la cronologia completa delle versioni.
-
 ---
 
 **Nota**: Questa è una mod fan-made non ufficiale. Pokémon è un marchio registrato di Nintendo/Game Freak/The Pokémon Company.
