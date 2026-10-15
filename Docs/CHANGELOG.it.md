@@ -14,6 +14,16 @@ e questo progetto aderisce al [Versionamento Semantico](https://semver.org/spec/
 
 ---
 
+## [1.2.6] - 2026-10-15
+
+### Risolto
+- **Compatibilità con Mega Showdown** — Allentato il vincolo della dipendenza da `mega_showdown` in `fabric.mod.json` da `>=1.6.0` a `*` per risolvere i conflitti di dipendenze su Fabric Loader causati dal nuovo ciclo di versionamento di Cobblemon: Mega Showdown (MSD 1.0.x - 1.3.x+ per Cobblemon 1.8.x), preservando al contempo la compatibilità con le versioni legacy.
+
+### Aggiunto
+- **Workflow di Pubblicazione Automatizzata** — Aggiunta la configurazione di `mod-publish-plugin` e il workflow di GitHub Actions per automatizzare la pubblicazione su CurseForge e la creazione delle Release su GitHub all'invio dei tag.
+
+---
+
 ## [1.2.5] - 2026-06-12
 
 ### Aggiunto
